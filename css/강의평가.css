@@ -46,7 +46,9 @@ main>.inner>.search>.results>.result{
     border-bottom: 1px solid #ddd;
     width: 80%;
 }
-
+main>.inner>.search>.results>.result:last-of-type {
+    border-bottom: none;
+}
 /* 리뷰 목록 */
 main>.inner>.board-list>.post-link{
     display: block;
@@ -56,23 +58,23 @@ main>.inner>.board-list>.post-link{
 main>.inner>.board-list {
     width: 65%;
 }
-main>.inner>.board-list>.post {
+main>.inner>.board-list> a{
     padding: 15px;
     background-color: #f9f9f9;
     border-bottom: 1px solid #ddd;
     text-decoration: none;
 }
-main>.inner>.board-list>.post:last-of-type {
+main>.inner>.board-list>a>.post:last-of-type {
     border-bottom: none;
 }
-main>.inner>.board-list>.post>.post-title, .post-meta, .post-preview {
+main>.inner>.board-list>a>.post>.post-title, .post-meta, .post-preview {
     cursor: pointer;
 }
-main>.inner>.board-list>.post>.post-title {
+main>.inner>.board-list>a>.post>.post-title {
     margin: 0 0 10px 0;
     font-size: 20px;
 }
-main>.inner>.board-list>.post>.post-preview {
+main>.inner>.board-list>a>.post>.post-preview {
     margin: 0;
     overflow: hidden;
     display: -webkit-box;
@@ -81,7 +83,7 @@ main>.inner>.board-list>.post>.post-preview {
     text-overflow: ellipsis;
 }
 
-main>.inner>.board-list>.post>.post-meta {
+main>.inner>.board-list>a>.post>.post-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,23 +92,23 @@ main>.inner>.board-list>.post>.post-meta {
     margin-bottom: 10px;
 }
 
-main>.inner>.board-list>.post>.post-meta .post-rating {
+main>.inner>.board-list>a>.post>.post-meta .post-rating {
     font-size: 20px; 
     color: gold;
     flex: 1; 
 }
-main>.inner>.board-list>.post>.post-meta .post-info {
+main>.inner>.board-list>a>.post>.post-meta .post-info {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     flex: 2; 
 }
-main>.inner>.board-list>.post>.post-meta>.post-author {
+main>.inner>.board-list>a>.post>.post-meta>.post-author {
     margin: 0;
     margin-right: 20px; 
 }
 
-main>.inner>.board-list>.post>.post-meta .post-date {
+main>.inner>.board-list>a>.post>.post-meta .post-date {
     margin: 0;
 }
 
