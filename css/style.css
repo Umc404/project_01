@@ -1,0 +1,177 @@
+/* reset.css */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* header */
+
+header{
+    width: 100%;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgb(165, 213, 231); /* 구분용 임시color*/
+}
+header>.inner{
+    width: 1170px;
+    margin: auto;
+    box-sizing: border-box;
+    position: relative;
+    height: 115px;
+}
+header>.inner>h1{
+    position: absolute;
+    margin-top: 15px;
+    left: 0;
+}
+header>.inner>.top-menu{
+    display: flex;
+    justify-content: end;
+}
+header>.inner>.top-menu>li{
+    position: relative;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+header>.inner>.top-menu>li>a:hover{
+    font-weight: 700;
+    color: red;
+}
+header>.inner>.nav>ul{
+    display: flex;
+    justify-content: center;
+    height: 79px;
+}
+header>.inner>.nav>ul>li{
+    margin: 0 40px;
+}
+header>.inner>.nav>ul>li>a{
+    font-size: large;
+    font-weight: 700;
+    line-height: 79px;
+}
+header>.inner>.nav>ul>li:hover{
+    border-bottom: 5px solid red;
+}
+header>.inner>.nav>ul>li:hover .stress{
+    color:red;
+}
+
+/* main */
+
+main{
+    background-color: bisque; /* 구분용 임시color*/
+}
+
+/* footer */
+
+footer{
+    background-color: rgba(128, 128, 128, 0.048);
+    width: 100%;
+    display: flex;
+}
+footer>.inner{
+    height: 200px;
+    margin: auto;
+    padding: 40px 200px 60px 32px;
+    box-sizing: border-box;
+}
+.bold{
+    font-weight: 700;
+}
+footer>.inner .before{
+    padding: 10px;
+}
+
+/* footer-bottom */
+
+footer>.inner>.bottom{
+    margin: 25px 0 30px 10px;
+}
+footer>.inner>.bottom>span{
+    padding: 5px 5px 30px 10px;
+    font-size: 12px;
+    position: relative;
+}
+footer>.inner>.bottom .before::before{
+    content: " ";
+    background-color: #d6d6d6;
+    width: 3px;
+    height: 13px;
+    position: absolute;
+    top: 15%;
+    left: 0; 
+}
+
+/* footer-middle */
+
+footer>.inner>.middle{
+    margin: 0 10px 10px 10px;
+}
+footer>.inner>.middle>span{
+    padding: 5px 5px 0 10px;
+    font-size: 12px;
+    position: relative;
+}
+footer>.inner>.middle .before::before{
+    content: " ";
+    background-color: #d6d6d6;
+    width: 3px;
+    height: 13px;
+    position: absolute;
+    top: 35%;
+    left: 0; 
+}
+
+/* footer-top-title */
+
+footer>.inner>.top-title{
+    margin: 0 0 10px 10px;
+    padding: 5px 30px 0 10px;
+}

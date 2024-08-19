@@ -1,0 +1,112 @@
+main>.inner{
+    width: 1280px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
+/* 검색바 */
+main>.inner>.search{
+    width: 35%;
+    position: relative;
+}
+main>.inner>.search input[type="search"] {
+    width: 80%;
+    padding: 25px 50px 25px 15px; 
+    border: none;
+    border-radius: 10px; 
+    background-color: #f0f0f0; 
+    color: #333; 
+    font-size: 18px; 
+    outline: none;
+}
+main>.inner>.search input[type="search"]::placeholder {
+    color: #888; 
+}
+.search input[type="search"]::-webkit-search-clear-button,
+.search input[type="search"]::-webkit-search-decoration,
+.search input[type="search"]::-webkit-search-done-button,
+.search input[type="search"]::-webkit-search-input,
+.search input[type="search"]::-webkit-search-submit-button {
+    -webkit-appearance: none; 
+}
+main>.inner>.search>.search-icon {
+    position: absolute;
+    right: 100px; 
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    background-image: url(../img/search.png);
+    background-size: cover;
+    cursor: pointer;
+}
+main>.inner>.search>.results>.result{
+    padding: 20px 5px;
+    border-bottom: 1px solid #ddd;
+    width: 80%;
+}
+
+/* 리뷰 목록 */
+main>.inner>.board-list>.post-link{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+main>.inner>.board-list {
+    width: 65%;
+}
+main>.inner>.board-list>.post {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+}
+main>.inner>.board-list>.post:last-of-type {
+    border-bottom: none;
+}
+main>.inner>.board-list>.post>.post-title, .post-meta, .post-preview {
+    cursor: pointer;
+}
+main>.inner>.board-list>.post>.post-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+main>.inner>.board-list>.post>.post-preview {
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+main>.inner>.board-list>.post>.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+main>.inner>.board-list>.post>.post-meta .post-rating {
+    font-size: 20px; 
+    color: gold;
+    flex: 1; 
+}
+main>.inner>.board-list>.post>.post-meta .post-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 2; 
+}
+main>.inner>.board-list>.post>.post-meta>.post-author {
+    margin: 0;
+    margin-right: 20px; 
+}
+
+main>.inner>.board-list>.post>.post-meta .post-date {
+    margin: 0;
+}
+
