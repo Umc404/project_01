@@ -6,10 +6,11 @@ main>.inner{
     padding: 20px 0px;
 }
 
-/* 검색바 */
+/* 메인 - 검색바 */
 main>.inner>.search{
     width: 35%;
     position: relative;
+    margin-top: 20px;
 }
 main>.inner>.search input[type="search"] {
     width: 80%;
@@ -22,7 +23,7 @@ main>.inner>.search input[type="search"] {
     outline: none;
 }
 main>.inner>.search input[type="search"]::placeholder {
-    color: #888; 
+    color: #F2F2F2; 
 }
 .search input[type="search"]::-webkit-search-clear-button,
 .search input[type="search"]::-webkit-search-decoration,
@@ -41,15 +42,19 @@ main>.inner>.search>.search-icon {
     background-size: cover;
     cursor: pointer;
 }
+main>.inner>.search>.results>a>.result, 
 main>.inner>.search>.results>.result{
     padding: 20px 5px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #f2f2f2;
     width: 80%;
+    line-height: 23px;
+    font-size: 18px;
+    color: black;
 }
-main>.inner>.search>.results>.result:last-of-type {
-    border-bottom: none;
+main>.inner>.search>.results>a:last-of-type>.result{
+    border: none;
 }
-/* 리뷰 목록 */
+/* 메인 - 리뷰 목록 */
 main>.inner>.board-list>.post-link{
     display: block;
     text-decoration: none;
@@ -58,14 +63,16 @@ main>.inner>.board-list>.post-link{
 main>.inner>.board-list {
     width: 65%;
 }
-main>.inner>.board-list> a{
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
+main>.inner>.board-list>a{
     text-decoration: none;
 }
-main>.inner>.board-list>a>.post:last-of-type {
-    border-bottom: none;
+main>.inner>.board-list>a>.post{
+    border-bottom: 1px solid #f2f2f2;
+    padding: 20px 0 30px 0;
+    box-sizing: border-box;
+}
+main>.inner>.board-list>a>.last-post{
+    border: none;
 }
 main>.inner>.board-list>a>.post>.post-title, .post-meta, .post-preview {
     cursor: pointer;
@@ -73,42 +80,124 @@ main>.inner>.board-list>a>.post>.post-title, .post-meta, .post-preview {
 main>.inner>.board-list>a>.post>.post-title {
     margin: 0 0 10px 0;
     font-size: 20px;
+    font-weight: 600;
+    padding-top: 10px;
 }
 main>.inner>.board-list>a>.post>.post-preview {
     margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 300;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 4; 
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
-
 main>.inner>.board-list>a>.post>.post-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: 14px;
-    color: #555;
+    color: #737373;
     margin-bottom: 10px;
 }
-
 main>.inner>.board-list>a>.post>.post-meta .post-rating {
     font-size: 20px; 
     color: gold;
-    flex: 1; 
-}
-main>.inner>.board-list>a>.post>.post-meta .post-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    flex: 2; 
+    margin-bottom: 10px;
 }
 main>.inner>.board-list>a>.post>.post-meta>.post-author {
-    margin: 0;
-    margin-right: 20px; 
+    margin-bottom: 10px;
+    font-size: 20px;
 }
-
 main>.inner>.board-list>a>.post>.post-meta .post-date {
     margin: 0;
+    color: #A6A6A6;
+    font-size: 16px;
+    font-weight: 300;
 }
 
+/* 개요 */
+.rates {
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    max-width: 1000px; 
+    margin: 20px auto; 
+    align-items: center;
+}
+.rate {
+    display: flex; 
+    align-items: center; 
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    justify-content: center; 
+}
+.value {
+    width: 24px; 
+    text-align: center;
+}
+
+.bar {
+    flex: 1; 
+    height: 5px; 
+    background-color: #F2F2F2; 
+    margin: 0 15px; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    position: relative; 
+}
+.gauge {
+    height: 100%; 
+    background-color: #FFBB00; 
+    transition: width 0.3s ease; 
+}
+.vote {
+    width: 48px; 
+    text-align: right; 
+}
+.winner {
+    color: #FFBB00; 
+}
+.bar .gauge.winner {
+    background-color: #FFBB00; 
+}
+main>.inner>.search>.item{
+    display: flex;
+    justify-content: left;
+}
+main>.inner>.search>.item>img{
+    width: 24px;
+    height: 24px;
+}
+main>.inner>.board-list>section>.subject{
+    display: flex;
+    justify-content: space-between;
+}
+main>.inner>.board-list>section>.subject>.sub-center{
+    width: calc(100% - 96px);
+    margin: 0 15px;
+}
+main>.inner>.board-list>section>ul>li:first-child{
+    text-align: left; 
+    width: 48px
+}
+main>.inner>.board-list>section>.subject>.sub-right{
+    width: 48px; 
+    text-align: right; 
+}
+main>.inner>.board-list>section>.object{
+    display: flex;
+    justify-content: left;
+}
+main>.inner>.board-list>section>.object>.sub-center{
+    width: calc(100% - 48px);
+    margin: 0 15px;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(1)>.sub-center>.subject-bar>div{
+    background-color: rgba(69, 195, 52, 0.2);
+    width: 47%;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
