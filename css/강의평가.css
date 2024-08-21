@@ -175,11 +175,21 @@ main>.inner-detail{
 }
 main>.inner>.detail-search{
     margin-top: 0px;
+    padding: 0 40px;
 }
 main>.inner>.detail-search>p{
     font-size: 34px;
-    font-weight: 600;
+    font-weight: bold;
     margin-bottom: 30px;
+    padding: 0 20px;
+}
+main>.inner>.detail-search>a{
+    border-radius: 12px;
+    padding: 20px;
+}
+main>.inner>.detail-search>.stress{
+    background-color: #FFF3F3;
+    font-weight: bold;
 }
 main>.inner>.detail-search>a>p{
     font-size: 24px;
@@ -188,8 +198,8 @@ main>.inner>.detail-search>a>p{
 main>.inner>.search>.item{
     display: flex;
     justify-content: left;
-    margin-top: 20px;
     gap: 10px;
+    align-items: center;
 }
 main>.inner>.search>.item>img{
     width: 38px;
@@ -206,6 +216,38 @@ main>.inner>.board-list>.box{
     flex-direction: column;
     gap: 16px;
 }
+main>.inner>.board-list>.box:nth-of-type(1){
+    padding: 40px;
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    color: #737373;
+}
+.arrow-img{
+    width: 10px;
+    height: 20px;
+    margin-left: 6px;
+}
+main>.inner>.board-list>.box>.info>.category>a{
+    display: flex;
+    align-items: center;
+    background-color: #F2F2F2;
+    padding: 0 14px;
+    border-radius: 10px;
+    height: 40px;
+}
+main>.inner>.board-list>.box>.info>.category>a>div{
+    height: 20px;
+    color: #737373;
+    font-weight: 600;
+}
+main>.inner>.board-list>.box:nth-of-type(1)>.info{
+    display: flex;
+    gap: 20px;
+}
+main>.inner>.board-list>.box:nth-of-type(1)>.info>div:nth-of-type(1){
+    line-height: 40px;
+}
 main>.inner>.board-list>.box>.info{
     display: flex;
     justify-content: left;
@@ -216,10 +258,20 @@ main>.inner>.board-list>.box>.info>div:nth-of-type(1){
 main>.inner-detail>.board-list>.box>.rating>.title{
     padding: 20px 20px 0 20px;
     font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+main>.inner-detail>.board-list>.box>.rating>.title>span:nth-of-type(1){
+    font-weight: 700;
 }
 main>.inner-detail>.board-list>.box>.rating>.title>span:nth-of-type(2)>img{
     width: 50px;
     height: 50px;
+}
+main>.inner-detail>.board-list>.box>.rating>.title>span:nth-of-type(3){
+    font-size: 16px;
+    color: #737373;
 }
 main>.inner>.board-list>section>.rating>.rates>.rate:nth-of-type(1)>.value{
     font-weight: 600;
@@ -249,11 +301,26 @@ main>.inner>.board-list>section>ul>li:first-child{
 main>.inner>.board-list>section>.object>.sub-center{
     display: flex;
     justify-content: left;
+    align-items: center;
 }
 main>.inner>.board-list>section>.object>.sub-center>div{
     height: 30px;
     line-height: 30px;
-    padding: 0 0 0 10px;
+    font-size: 20px;
+    color: #A6A6A6;
+}
+main>.inner>.board-list>section>.object>.sub-center>div:nth-of-type(1){
+    color: black;
+}
+main>.inner>.board-list>section>.object>.sub-center>div:nth-of-type(1)>img{
+    width: 15px;
+    height: 15px;
+}
+main>.inner>.board-list>section>.object>.sub-center>strong{
+    background-color: #D6D6D6;
+    width: 2px;
+    height: 13px;
+    margin: 0 12px;
 }
 main>.inner>.board-list>section>.subject>.sub-left,
 main>.inner>.board-list>section>.object>li:nth-of-type(1){
@@ -267,7 +334,7 @@ main>.inner>.board-list>section>.subject>.sub-right{
     text-align: right; 
 }
 main>.inner>.board-list>section>.subject>.sub-right>div{
-    height: 30px;
+    height: 40px;
     line-height: 30px;
     padding-bottom: 10px;
 }
@@ -354,7 +421,169 @@ main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-center>.subject-bar
     width: 67%;
     font-weight: 600;
 }
-
+main>.inner>.board-list>.box>.line-div{
+    height: 2px;
+    background-color: #EDEDED;
+    width: calc(100% - 40px);
+    display: flex;
+    margin: 0 auto;
+}
+main>.inner>.board-list>.box>.articles{
+    margin: 20px auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: calc(100% - 40px);
+}
+main>.inner>.board-list>.box>.articles>.article{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+main>.inner>.board-list>.box>.articles>.article>.info>span:nth-of-type(1){
+    margin-right: 12px;
+    color: #A6A6A6;
+    font-weight: 300;
+}
+main>.inner>.board-list>.box>.articles>.article>.info>span:nth-of-type(2){
+    color: #F91F15;
+    font-weight: 300;
+}
+main>.inner>.board-list>.box>.articles>.article>.info>img{
+    width: 15px;
+    height: 15px
+}
+main>.inner>.board-list>.box>.articles>.article>.text{
+    font-size: 20px;
+    line-height: 28px;
+    display: -webkit-box;          /* Flexbox처럼 사용하기 위해 */
+    -webkit-box-orient: vertical;  /* 수직 정렬 */
+    -webkit-line-clamp: 2;         /* 줄 수를 2줄로 제한 */
+    overflow: hidden;              /* 넘치는 텍스트를 숨기기 */
+    text-overflow: ellipsis;       /* 넘친 텍스트를 ...으로 표시 */
+    white-space: normal; 
+    font-weight: 300;
+}
+main>.inner>.board-list>.box>.articles>.article>.rate2>img{
+    width: 24px;
+    height: 24px;
+}
+main>.inner>.board-list>.box>.articles>.article>a{
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 20px;
+    height: 50px;
+    margin-top: 20px;
+    color: #737373;
+    font-weight: bold;
+}
+main>.inner>.board-list>.box>h2{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+main>.inner>.board-list>.book{
+    gap: 0;
+}
+main>.inner>.board-list>.book>a{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+main>.inner>.board-list>.book>a>img{
+    width: 120px;
+    height: 140px;
+    border-radius: 12px;
+}
+main>.inner>.board-list>.book>a>.book-desc{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+}
+main>.inner>.board-list>.book>a>.book-desc>.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+main>.inner>.board-list>.book>a>.book-desc>.author,
+main>.inner>.board-list>.book>a>.book-desc>.publisher{
+    font-size: 16px;
+    color: #737373;
+}
+main>.inner>.board-list>.book>a>.book-desc>.price>.selling{
+    font-size: 24px;
+    color: #F91F15;
+    font-weight: bold;
+}
+main>.inner>.board-list>.book>a>.book-desc>.price>.production{
+    text-decoration: line-through;
+    color: #A6A6A6;
+}
+main>.inner>.board-list>.exam{
+    gap: 0;
+}
+main>.inner>.board-list>.exam>.contents{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+main>.inner>.board-list>.exam>.contents>.question{
+    display: flex;
+    align-items: center;
+}
+main>.inner>.board-list>.exam>.contents>div>h3{
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 70px;
+}
+main>.inner>.board-list>.exam>.contents>.question>.options>span{
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+}
+main>.inner>.board-list>.exam>.contents>.question>.options>strong{
+    background-color: #D6D6D6;
+    width: 2px;
+    height: 13px;
+    margin: 0 12px;
+    display: inline-block;
+}
+main>.inner>.board-list>.exam>.contents>.question>.options>span>img{
+    width: 15px;
+    height: 15px;
+}
+main>.inner>.board-list>.exam>.contents>.knowhow{
+    display: flex;
+    align-items: center;
+}
+main>.inner>.board-list>.exam>.contents>.knowhow>span{
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    white-space: nowrap;        /* 텍스트를 한 줄로 유지 */
+    overflow: hidden;           /* 넘치는 텍스트를 숨김 */
+    text-overflow: ellipsis;    /* 넘친 텍스트를 ...으로 표시 */
+    display: inline-block;
+    width: calc(100% - 70px);
+}
+main>.inner>.board-list>.exam>.contents>a{
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 20px;
+    height: 50px;
+    color: #737373;
+    font-weight: bold;
+}
 /* 강의평가목록 */
 main>.inner>.search>.write{
     border: 1px solid #FFA100;

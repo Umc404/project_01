@@ -42,7 +42,7 @@
                     <img src="../img/info.png" alt="">
                     <p>개요</p>
                 </a>
-                <a href="" class="item">
+                <a href="" class="item stress">
                     <img src="../img/rating.png" alt="">
                     <p>강의평</p>
                 </a>
@@ -112,7 +112,7 @@
                             ${getStarRatingHtml(review.rating)}
                         </div>
                         <p>24년 1학기 수강자</p>
-                        <p>총평: ${review.reviewText || '작성된 총평이 없습니다.'}</p>
+                        <p>${review.reviewText || '작성된 강의평이 없습니다.'}</p>
                     </div>
                 `).join('');
             }
