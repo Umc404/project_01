@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- CSS 추후 따로 파일 나누겠습니다. -->
+    <style>
+        main>.inner{
+            width: 1280px;
+            margin: 0 auto;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        /* aside */
+        main>.inner>aside{
+            width: 400px;
+        }
+
+        main>.inner>aside>.select>select{
+            width: 100%;
+            height: 40px;
+            line-height: 20px;
+            padding: 10px;
+            font-size: 14px;
+            color: #292929;
+            border: 2px solid #d6d6d6;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        main>.inner>aside>.newtimetable{
+            border: 1px solid #d6d6d6;
+            background-color: white;
+            padding: 25px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+        }
+
+        main>.inner>aside>.newtimetable>h2{
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        main>.inner>aside>.newtimetable .left{
+            display: inline-block;
+            width: 90px;
+            height: 30px;
+            line-height: 30px;
+            color: #a6a6a6;
+        }
+
+        main>.inner>aside>.newtimetable span{
+            display: inline-block;
+        }
+
+        main>.inner>aside>.newtimetable .right{
+            width: 250px;
+            height: 30px;
+
+        }
+
+        main>.inner>aside>.newtimetable .textBox, .timeBox{
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 5px;
+        }
+
+        main>.inner>aside>.newtimetable>.textBox>input{
+            background-color: #F2F2F2;
+            padding: 0 5px;
+            line-height: 30px;
+            border: 1px solid #d6d6d6;
+            box-sizing: border-box;
+            color: #292929;
+        
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right{
+            text-align: start;
+            height: 110px;
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right>.top>ol{
+            margin: 0;
+            margin-bottom: 5px;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right>.top>ol>li{
+            margin-right: 1px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+            color: #a6a6a6;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        
+        main>.inner>aside>.newtimetable>.timeBox>.right>.top>ol>.active{
+            /* 호버에서 클릭시 변경으로 바꿀 예정 */
+            /* class="active" 추가 후 hover => .active로 변경할 것임 */
+            color: white;
+            background-color: #ffa100;
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right>.bottom{
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right>.bottom>select{
+            margin-right: 5px;
+            height: 30px;
+            border: 1px solid #d6d6d6;
+            color: #292929;
+            font-size: 13px;
+            background-color: transparent;
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right>.bottom>span{
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        main>.inner>aside>.newtimetable>.timeBox>.right .place{
+            width: 250px;
+            height: 30px;
+            padding: 0 5px;
+            line-height: 30px;
+            border: 1px solid #d6d6d6;
+            color: #292929;
+            background-color: #f2f2f2;
+            font-size: 13px;
+        }
+
+        main>.inner>aside>.newtimetable>.btnBox{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        main>.inner>aside>.newtimetable>.btnBox>.btnplus{
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            color: #ffa100;
+            font-weight: bold;
+        }
+
+        main>.inner>aside>.newtimetable>.btnBox>.btnsub{
+            padding: 0 10px;
+            border: 0;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #ffa100;
+            cursor: pointer;
+        }
+
+        /* timetable */
+
+        main>.inner>.timetable{
+            /* width: 850px; */
+            text-align: center;
+        }
+
+        main>.inner>.timetable table{
+            border-collapse: collapse;
+        }
+
+        main>.inner>.timetable>.thead>table{
+            background-color: #f2f2f2;
+        }
+
+        main>.inner>.timetable>.thead>table th{
+            width: 80px;
+            height: 40px;
+            border: 1px solid #d6d6d6;
+            color: #a6a6a6;
+            font-weight: normal;
+            font-size: 14px;
+            box-sizing: border-box;
+
+            vertical-align: middle;
+        }
+
+        main>.inner>.timetable>.thead>table td{
+            width: 130px;
+            height: 40px;
+            border: 1px solid #d6d6d6;
+            color: #a6a6a6;
+            font-weight: normal;
+            font-size: 14px;
+            box-sizing: border-box;
+
+            vertical-align: middle;
+        }
+
+        main>.inner>.timetable>.tbody>table th{
+            width: 80px;
+            border: 1px solid #d6d6d6;
+            box-sizing: border-box;
+            color: #a6a6a6;
+            font-weight: normal;
+            font-size: 14px;
+
+            vertical-align: middle;
+        }
+
+        main>.inner>.timetable>.tbody>table td{
+            width: 130px;
+            border: 1px solid #d6d6d6;
+            box-sizing: border-box;
+        }
+
+        main>.inner>.timetable>.tbody>table .class,.mon,.tue,.wed,.thu,.fri{
+            height: 60px;
+            border-bottom: 1px solid #d6d6d6;
+            box-sizing: border-box;
+            line-height: 60px;
+
+        }
+ 
+        main>.inner>.timetable>.tbody>table .time{
+            height: 120px;
+            border-bottom: 1px solid #d6d6d6;
+            box-sizing: border-box;
+            line-height: 120px;
+        }
+
+        main>.inner>.timetable>.tbody>table .mon,.tue,.wed,.thu,.fri{
+            position: relative;
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv{
+            width: 129px;
+            z-index: 10;
+            float: left;
+            position: absolute;
+            left: 0;
+            text-align: start;
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv>h3{
+            width: 120px;
+            margin: 10px 10px 0 10px;
+            font-size: 14px;
+            line-height: 20px;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv>h3>.mydiv_del{
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            color: #a6a6a6;
+            font-weight: bold;
+            display: none;
+            margin-right: 10px;
+            
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv:hover .mydiv_del{
+            display: block;
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv>p{
+            margin: 0 10px 10px 10px;
+            line-height: 15px;
+
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv>p>span{
+            color: #737373;
+            font-size: 12px;
+        }
+
+        main>.inner>.timetable>.tbody td .mydiv>p>:first-child{
+            font-weight: bold;
+        }
+
+        main>.inner>.timetable>.tbody td .color0{
+            background-color: #dceef2;
+        }
+        main>.inner>.timetable>.tbody td .color1{
+            background-color: #eff9cc;
+        }
+        main>.inner>.timetable>.tbody td .color2{
+            background-color: #fff8cc;
+        }
+        main>.inner>.timetable>.tbody td .color3{
+            background-color: #dcf2e9;
+        }
+        main>.inner>.timetable>.tbody td .color4{
+            background-color: #ffe9e9;
+        }
+        main>.inner>.timetable>.tbody td .color5{
+            background-color: #f2e8e8;
+        }
+        main>.inner>.timetable>.tbody td .color6{
+            background-color: #dee8f6;
+        }
+        main>.inner>.timetable>.tbody td .color7{
+            background-color: #ffedda;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class = "inner">
+            <!-- header -->
+            <h1>
+            <a href="">
+                <img src="../img/img_ezenInside2.png" alt="">
+            </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="">로그인</a></li>
+                <li><a href="">내정보</a></li>
+                <li><a href="">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="" class="stress">공지사항</a></li>
+                    <li><a href="" class="stress">자유게시판</a></li>
+                    <li><a href="" class="stress">시간표</a></li>
+                    <li><a href="" class="stress">강의평가</a></li>
+                    <li><a href="" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main>
+        <div class="inner">
+            <!-- 메인태그 왼쪽 : 입력 폼 -->
+            <aside>
+                <!-- 학기 선택  -->
+                <form class="select" action="">
+                    <select id="semesters">
+                        <option value="">2024년 2학기</option>
+                        <option value="">2024년 1학기</option>
+                        <option value="">2023년 2학기</option>
+                        <option value="">2023년 1학기</option>
+                        <option value="">2022년 2학기</option>
+                        <option value="">2022년 1학기</option>
+                        <option value="">2021년 2학기</option>
+                        <option value="">2021년 1학기</option>
+                        <option value="">2020년 2학기</option>
+                        <option value="">2020년 1학기</option>
+                    </select>
+                </form>
+                <!-- 새 수업 추가 -->
+                <form class="newtimetable" action="">
+                    <h2>새 수업 추가</h2>
+                    <div class="textBox">
+                        <span class="left">과목명(필수)</span>
+                        <input type="text" id="subName" class="right" placeholder="예) 일반생물학">
+                    </div>
+                    <div class="textBox">
+                        <span class="left">교수명</span>
+                        <input type="text" id="proName" class="right" placeholder="예) 홍길동">
+                    </div>
+                    <div class="timeBox">
+                        <span class="left">시간/장소</span>
+                        <div class="right">
+                            <div class="top">
+                                <ol>
+                                    <li id="limon">월</li>
+                                    <li id="litue">화</li>
+                                    <li id="liwed">수</li>
+                                    <li id="lithu">목</li>
+                                    <li id="lifri">금</li>
+                                </ol>
+                            </div>
+                            <div class="bottom">
+                                <select id="starthour">
+                                    <option value="1">오전 9시</option>
+                                    <option value="2">오전 9시 30분</option>
+                                    <option value="3">오전 10시</option>
+                                    <option value="4">오전 10시 30분</option>
+                                    <option value="5">오전 11시</option>
+                                    <option value="6">오전 11시 30분</option>
+                                    <option value="7">오후 12시</option>
+                                    <option value="8">오후 12시 30분</option>
+                                    <option value="9">오후 1시</option>
+                                    <option value="10">오후 1시 30분</option>
+                                    <option value="11">오후 2시</option>
+                                    <option value="12">오후 2시 30분</option>
+                                    <option value="13">오후 3시</option>
+                                    <option value="14">오후 3시 30분</option>
+                                    <option value="15">오후 4시</option>
+                                    <option value="16">오후 4시 30분</option>
+                                    <option value="17">오후 5시</option>
+                                    <option value="18">오후 5시 30분</option>
+                                    <option value="19">오후 6시</option>
+                                </select>   
+                                <span>~</span>                    
+                                <select id="endhour">
+                                    <option value="1">오전 9시</option>
+                                    <option value="2">오전 9시 30분</option>
+                                    <option value="3">오전 10시</option>
+                                    <option value="4">오전 10시 30분</option>
+                                    <option value="5">오전 11시</option>
+                                    <option value="6">오전 11시 30분</option>
+                                    <option value="7">오후 12시</option>
+                                    <option value="8">오후 12시 30분</option>
+                                    <option value="9">오후 1시</option>
+                                    <option value="10">오후 1시 30분</option>
+                                    <option value="11">오후 2시</option>
+                                    <option value="12">오후 2시 30분</option>
+                                    <option value="13">오후 3시</option>
+                                    <option value="14">오후 3시 30분</option>
+                                    <option value="15">오후 4시</option>
+                                    <option value="16">오후 4시 30분</option>
+                                    <option value="17">오후 5시</option>
+                                    <option value="18">오후 5시 30분</option>
+                                    <option value="19">오후 6시</option>
+                                </select>   
+                            </div>
+                            <div class="bottom">
+                                <input type="text" class="place" id="place" placeholder="예) 기술관 203호">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnBox">
+                        <button type="button" class="btnplus">+ 더입력</button>
+                        <button type="button" class="btnsub" id="submit">저장</button>
+                    </div>
+                </form>
+            </aside>
+            
+            <!-- 메인 태그 오른쪽 : 시간표 -->
+            <div class="timetable">
+                <!-- 속성 표시 테이블 분리 -->
+                <div class="thead">
+                    <table>
+                        <tr>
+                            <th>교시</th>
+                            <td>월</td>
+                            <td>화</td>
+                            <td>수</td>
+                            <td>목</td>
+                            <td>금</td>
+                            <th>시간</th>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 요일 별 시간표 -->
+                <div class="tbody">
+                    <table>
+                        <tr>
+                            <th class="class">
+                                <div class="class class1">1교시</div>
+                                <div class="class class2">2교시</div>
+                                <div class="class class3">3교시</div>
+                                <div class="class class4">4교시</div>
+                                <div class="class class5">5교시</div>
+                                <div class="class class6">6교시</div>
+                                <div class="class class7">7교시</div>
+                                <div class="class class8">8교시</div>
+                                <div class="class class9">9교시</div>
+                                <div class="class class10">10교시</div>
+                                <div class="class class11">11교시</div>
+                                <div class="class class12">12교시</div>
+                                <div class="class class13">13교시</div>
+                                <div class="class class14">14교시</div>
+                                <div class="class class15">15교시</div>
+                                <div class="class class16">16교시</div>
+                                <div class="class class17">17교시</div>
+                                <div class="class class18">18교시</div>
+                                <div class="class class19">19교시</div>
+                                <div class="class class20">20교시</div>
+                            </th>
+                            <td class="mon" id="mon">
+                                <div class="mon mon1"></div>
+                                <div class="mon mon2"></div>
+                                <div class="mon mon3"></div>
+                                <div class="mon mon4"></div>
+                                <div class="mon mon5"></div>
+                                <div class="mon mon6"></div>
+                                <div class="mon mon7"></div>
+                                <div class="mon mon8"></div>
+                                <div class="mon mon9"></div>
+                                <div class="mon mon10"></div>
+                                <div class="mon mon11"></div>
+                                <div class="mon mon12"></div>
+                                <div class="mon mon13"></div>
+                                <div class="mon mon14"></div>
+                                <div class="mon mon15"></div>
+                                <div class="mon mon16"></div>
+                                <div class="mon mon17"></div>
+                                <div class="mon mon18"></div>
+                                <div class="mon mon19"></div>
+                                <div class="mon mon20"></div>
+                            </td>
+                            <td class="tue" id="tue">
+                                <div class="tue tue1"></div>
+                                <div class="tue tue2"></div>
+                                <div class="tue tue3"></div>
+                                <div class="tue tue4"></div>
+                                <div class="tue tue5"></div>
+                                <div class="tue tue6"></div>
+                                <div class="tue tue7"></div>
+                                <div class="tue tue8"></div>
+                                <div class="tue tue9"></div>
+                                <div class="tue tue10"></div>
+                                <div class="tue tue11"></div>
+                                <div class="tue tue12"></div>
+                                <div class="tue tue13"></div>
+                                <div class="tue tue14"></div>
+                                <div class="tue tue15"></div>
+                                <div class="tue tue16"></div>
+                                <div class="tue tue17"></div>
+                                <div class="tue tue18"></div>
+                                <div class="tue tue19"></div>
+                                <div class="tue tue20"></div>
+                            </td>
+                            <td class="wed" id="wed">
+                                <div class="wed wed1"></div>
+                                <div class="wed wed2"></div>
+                                <div class="wed wed3"></div>
+                                <div class="wed wed4"></div>
+                                <div class="wed wed5"></div>
+                                <div class="wed wed6"></div>
+                                <div class="wed wed7"></div>
+                                <div class="wed wed8"></div>
+                                <div class="wed wed9"></div>
+                                <div class="wed wed10"></div>
+                                <div class="wed wed11"></div>
+                                <div class="wed wed12"></div>
+                                <div class="wed wed13"></div>
+                                <div class="wed wed14"></div>
+                                <div class="wed wed15"></div>
+                                <div class="wed wed16"></div>
+                                <div class="wed wed17"></div>
+                                <div class="wed wed18"></div>
+                                <div class="wed wed19"></div>
+                                <div class="wed wed20"></div>
+                            </td>
+                            <td class="thu" id="thu">
+                                <div class="thu thu1"></div>
+                                <div class="thu thu2"></div>
+                                <div class="thu thu3"></div>
+                                <div class="thu thu4"></div>
+                                <div class="thu thu5"></div>
+                                <div class="thu thu6"></div>
+                                <div class="thu thu7"></div>
+                                <div class="thu thu8"></div>
+                                <div class="thu thu9"></div>
+                                <div class="thu thu10"></div>
+                                <div class="thu thu11"></div>
+                                <div class="thu thu12"></div>
+                                <div class="thu thu13"></div>
+                                <div class="thu thu14"></div>
+                                <div class="thu thu15"></div>
+                                <div class="thu thu16"></div>
+                                <div class="thu thu17"></div>
+                                <div class="thu thu18"></div>
+                                <div class="thu thu19"></div>
+                                <div class="thu thu20"></div>
+                            </td>
+                            <td class="fri" id="fri">
+                                <div class="fri fri1"></div>
+                                <div class="fri fri2"></div>
+                                <div class="fri fri3"></div>
+                                <div class="fri fri4"></div>
+                                <div class="fri fri5"></div>
+                                <div class="fri fri6"></div>
+                                <div class="fri fri7"></div>
+                                <div class="fri fri8"></div>
+                                <div class="fri fri9"></div>
+                                <div class="fri fri10"></div>
+                                <div class="fri fri11"></div>
+                                <div class="fri fri12"></div>
+                                <div class="fri fri13"></div>
+                                <div class="fri fri14"></div>
+                                <div class="fri fri15"></div>
+                                <div class="fri fri16"></div>
+                                <div class="fri fri17"></div>
+                                <div class="fri fri18"></div>
+                                <div class="fri fri19"></div>
+                                <div class="fri fri20"></div>
+                            </td>
+                            <th class="time">
+                                <div class="time time1">오전9시</div>
+                                <div class="time time2">오전10시</div>
+                                <div class="time time3">오전11시</div>
+                                <div class="time time4">오후12시</div>
+                                <div class="time time5">오후1시</div>
+                                <div class="time time6">오후2시</div>
+                                <div class="time time7">오후3시</div>
+                                <div class="time time8">오후4시</div>
+                                <div class="time time9">오후5시</div>
+                                <div class="time time10">오후6시</div>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    
+
+    <!-- footer -->
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+             <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+             </div>
+             <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 012-34-56789</span>
+                <span class="before">직업정보제공사업 신고번호: 01234567891011</span>
+             </div>
+             <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">㈜이젠인사이드</a></span>
+            </div>
+    </footer>
+
+    <!-- 자바 스크립트 추후 따로 파일 생성하겠습니다. -->
+    <script>
+        // 새 수업 추가에서 요일 버튼 클릭했을 때 week 변수에 요일명 담는 함수
+        let week = '';
+
+        document.getElementById('limon').addEventListener('click',(e)=>{
+            console.log(e.target.id);
+            addactive(e.target.id);
+            week = 'mon';
+        })
+        document.getElementById('litue').addEventListener('click',(e)=>{
+            console.log(e.target.id);
+            addactive(e.target.id);
+            week = 'tue';
+        })
+        document.getElementById('liwed').addEventListener('click',(e)=>{
+            console.log(e.target.id);
+            addactive(e.target.id);
+            week = 'wed';
+        })
+        document.getElementById('lithu').addEventListener('click',(e)=>{
+            console.log(e.target.id);
+            addactive(e.target.id);
+            week = 'thu';
+        })
+        document.getElementById('lifri').addEventListener('click',(e)=>{
+            console.log(e.target.id);
+            addactive(e.target.id);
+            week = 'fri';
+        })
+
+        function addactive(id){
+            document.getElementById('limon').className = '';
+            document.getElementById('litue').className = '';
+            document.getElementById('liwed').className = '';
+            document.getElementById('lithu').className = '';
+            document.getElementById('lifri').className = '';
+            
+            document.getElementById(id).className = 'active';
+        }
+
+        function setLocalStorage(key, value){ 
+            localStorage.setItem(key,JSON.stringify(value)); 
+        }
+
+        function getLocalStorage(key){
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        const timetableArr = [];
+        const valArr = [];
+        const subSet = new Set();
+        const subArr = [];
+
+        document.getElementById('submit').addEventListener('click',()=>{
+            let sub = document.getElementById('subName').value;
+            let pro = document.getElementById('proName').value;
+            let start = document.getElementById('starthour').value;
+            let end = document.getElementById('endhour').value;
+            let room = document.getElementById('place').value;
+
+            if(valify(valArr, week, start, end)){
+
+                alert("같은 시간에 이미 수업이 있습니다!");
+
+            }else{
+
+                for(let i=start; i<=end-1; i++){
+                    let valstr = `${week}-${i}`
+                    valArr.push(valstr);
+                }
+
+                subSet.add(sub);
+                subArr.splice(0,subArr.length);
+                subSet.forEach(e=>{
+                    subArr.push(e);
+                })
+                console.log(subArr);
+
+                let colorName = `color${subArr.indexOf(sub)}`;
+                console.log(colorName);
+
+                const tableObj = {
+                    subName : sub,
+                    proName : pro,
+                    week : week,
+                    starthour : start,
+                    endhour : end,
+                    place : room,
+                    color : colorName
+                }
+                
+                timetableArr.push(tableObj);
+            }
+            
+            setLocalStorage('timetable', timetableArr);
+            printTable(timetableArr);
+        })
+
+        function valify(arr, week, start, end){
+            console.log("검증")
+            for(let i=start; i<=end-1; i++){
+                if(arr.includes(`${week}-${i}`)){
+                    console.log("중복있음")
+                    return true;
+                }
+            }
+            console.log("중복없음")
+            return false;
+        }
+        
+        // printTable(getLocalStorage('timetable'));
+
+        function printTable(arr){
+            for(let i=0; i<arr.length; i++){
+                console.log(arr[i].color);
+                let mydiv = `<div class="mydiv ${arr[i].color}" style="height:${60*(Number(arr[i].endhour)-Number(arr[i].starthour))}px; top:${60*(Number(arr[i].starthour)-1)}px"><h3>${arr[i].subName}<button type="button" class="mydiv_del" id="delBtn">X</button></h3><p><span>${arr[i].proName}</span><br><span>${arr[i].place}</span></p></div>`;
+                document.getElementById(`${arr[i].week}`).innerHTML += mydiv;
+            }
+        }
+        
+    </script>
+</body>
+</html>

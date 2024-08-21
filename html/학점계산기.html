@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        /* CSS */
+        /* chart 라이브러리 CSS */
+        @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+        main>.inner{
+            width: 1280px;
+            margin: 0 auto;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        main>.inner>.chart{
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            background-color: white;
+
+            display: flex;
+            flex-direction: column;
+
+            margin-bottom: 20px;
+        }
+
+        main>.inner>.chart>.overview{
+            width: 360px;
+            height: 50px;
+            margin: 55px 0 30px 45px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>.inner>.chart>.overview>.box>h4{
+            font-size: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        main>.inner>.chart>.overview>.box>div{
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        main>.inner>.chart>.overview>.box .value{
+            font-size: 26px;
+            color: #ff9900;
+            font-weight: bold;
+            line-height: 32px;
+        }
+
+        main>.inner>.chart>.overview>.box .total{
+            font-size: 12px;
+            color: #a6a6a6;
+            line-height: 18px;
+            
+        }
+
+        main>.inner>.chart>.semester{
+            display: flex;
+            justify-content: start;
+        }
+
+        main>.inner>.chart>.semester>#chart{
+            width: 400px;
+            height: 200px;
+            margin-right: 30px;
+            margin-left: 25px;
+        }
+
+        main>.inner>.chart>.semester>ul{
+            width: 300px;
+            height: 200px;
+
+            margin-top: 40px;
+            
+        }
+
+        main>.inner>.chart>.semester>ul>li{
+            display: flex;
+            margin-bottom: 15px;
+
+            font-size: 13px;
+        }
+
+        main>.inner>.chart>.semester>ul>li .left{
+            margin-right: 5px;
+        }
+
+        main>.inner>.chart>.semester>ul>li .right{
+            display: flex;
+            align-items: center;
+        }
+
+        main>.inner>.chart>.semester>ul>li .ratiobar{
+            width: 70px;
+            height: 5px;
+            background-color: #a6a6a6;
+            margin-right: 5px;
+        }
+
+        main>.inner>.chart>.semester>ul>.li1 .ratiobar{
+            width: 149px;
+            background-color: rgb(242, 133, 114);
+        }
+        main>.inner>.chart>.semester>ul>.li1 .ratiotext{
+            color: rgb(242, 133, 114);
+        }
+        main>.inner>.chart>.semester>ul>.li2 .ratiobar{
+            width: 133px;
+            background-color: rgb(236, 197, 92);
+        }
+        main>.inner>.chart>.semester>ul>.li2 .ratiotext{
+            color: rgb(236, 197, 92);
+        }
+        main>.inner>.chart>.semester>ul>.li3 .ratiobar{
+            width: 97px;
+            background-color: rgb(160, 198, 97);
+        }
+        main>.inner>.chart>.semester>ul>.li3 .ratiotext{
+            color: rgb(160, 198, 97);
+        }
+        main>.inner>.chart>.semester>ul>.li4 .ratiobar{
+            width: 97px;
+            background-color: rgb(130, 209, 194);
+        }
+        main>.inner>.chart>.semester>ul>.li4 .ratiotext{
+            color: rgb(130, 209, 194);
+        }
+        main>.inner>.chart>.semester>ul>.li5 .ratiobar{
+            width: 72px;
+            background-color: rgb(122, 158, 224);
+        }
+        main>.inner>.chart>.semester>ul>.li5 .ratiotext{
+            color: rgb(122, 158, 224);
+        }
+
+        /* menu */
+        main>.inner>.menu{
+            width: 800px;
+            padding: 25px 0 25px;
+
+            margin: 0 auto;
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            background-color: white;
+            margin-bottom: 20px;
+
+        }
+
+        main>.inner>.menu>ol{
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        main>.inner>.menu>ol>li{
+            height: 20px;
+        }
+        
+        main>.inner>.menu>ol>li>a{
+            cursor: pointer;
+            color: #a6a6a6;
+            font-size: 14px;
+        }
+
+        main>.inner>.menu>ol>li>.active{
+            color: rgb(33, 33, 33);
+            font-weight: bold;
+            border-bottom: 2px solid rgb(33, 33, 33);
+        }
+
+        /* subject */
+        main>.inner>.subjects{
+            width: 800px;
+            margin: 0 auto;
+            padding: 25px;
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            background-color: white;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        main>.inner>.subjects>caption{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        main>.inner>.subjects table{
+            border-collapse: collapse;
+        }
+
+        main>.inner>.subjects>caption>.left>h3{
+            font-size: 22px;
+            font-weight: bold;
+            text-align: start;
+            margin-bottom: 10px;
+        }
+
+        main>.inner>.subjects>caption>.left>p{
+            font-size: 12px;
+            color: #737373;
+            margin-bottom: 10px;
+        }
+
+        main>.inner>.subjects>caption>.left>p>span{
+            color: #ff9900;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        main>.inner>.subjects>caption>.right>a{
+            width: 110px;
+            height: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 40px;
+            background-color: #ff9900;
+            color: white;
+            border-radius: 20px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        main>.inner>.subjects>tbody>tr{
+            border: 1px solid #ededed;
+        }
+        
+        main>.inner>.subjects>tbody>tr>th{
+            text-align: center;
+            line-height: 40px;
+            background-color: white;
+            color: #a6a6a6;
+        }
+
+        main>.inner>.subjects>tbody>tr>td{
+            vertical-align: middle;
+        }
+
+        main>.inner>.subjects>tbody>tr>.att1{
+            text-align: start;
+            padding-left: 15px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            border-right: 1px solid #ededed;
+        }
+
+        main>.inner>.subjects>tbody>tr>.att1>input{
+            width: 560px;
+        }
+
+        main>.inner>.subjects>tbody>tr>.att2{
+            background-color: #f9f9f9;
+            border-right: 1px solid #ededed;
+        }
+
+        main>.inner>.subjects>tbody>tr>.att2>input{
+            width: 60px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        main>.inner>.subjects>tbody>tr>.att3{
+            width: 60px;
+            border-right: 1px solid #ededed;
+        }
+        
+        main>.inner>.subjects>tbody>tr>.att3>select{
+            padding-left: 5px;
+            border: none;
+            outline: none;
+            font-family: "NotoSansKR";
+        }
+
+        main>.inner>.subjects>tbody>tr>.att4{
+            width: 60px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        main>.inner>.subjects>tbody>tr>.att4>input{
+            background-color: #737373;
+            /* 체크박스 색상 나중에 변경할 것 */
+        }
+
+        main>.inner>.subjects>tbody>.thead>th{
+            background-color: white;
+        }
+
+        main>.inner>.subjects>tbody>tr>td>input{
+            height: 40px;
+            border: none;
+            outline: none;
+            margin-top: 0px;
+            box-sizing: border-box;
+            background-color: transparent;
+            font-size: 15px;
+        }
+
+        main>.inner>.subjects>tbody>tr .footOp{
+            height: 40px;
+            padding-left: 15px;
+            font-size: 13px;
+        }
+        
+        main>.inner>.subjects>tbody>tr .footOp>a{
+            cursor: pointer;
+        }
+
+        main>.inner>.subjects>tbody>tr .footOp>:first-child{
+            color: #ff9900;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class = "inner">
+            <!-- header -->
+            <h1>
+            <a href="">
+                <img src="../img/img_ezenInside2.png" alt="">
+            </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="">로그인</a></li>
+                <li><a href="">내정보</a></li>
+                <li><a href="">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="" class="stress">공지사항</a></li>
+                    <li><a href="" class="stress">자유게시판</a></li>
+                    <li><a href="" class="stress">시간표</a></li>
+                    <li><a href="" class="stress">강의평가</a></li>
+                    <li><a href="" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="inner">
+            <div class="chart">
+                <article class="overview">
+                    <div class="box box1">
+                        <h4>전체 평점</h4>
+                        <div>
+                            <p class="value">3.85</p>
+                            <p class="total">/ 4.5</p>
+                        </div>
+                    </div>
+                    <div class="box box2">
+                        <h4>전공 평점</h4>
+                        <div>
+                            <p class="value">3.85</p>
+                            <p class="total">/ 4.5</p>
+                        </div>
+                    </div>
+                    <div class="box box3">
+                        <h4>취득 학점</h4>
+                        <div>
+                            <p class="value" id="chartboxNum3">115</p>
+                            <p class="total">/ 150</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="semester">
+                    <div id="chart"></div>
+                    <ul>
+                        <li class="li1"><span class="left">A+</span><div class="right"><div class="ratiobar"></div><span class="ratiotext">23%</span></div></li>
+                        <li class="li2"><span class="left">B+</span><div class="right"><div class="ratiobar"></div><span class="ratiotext">21%</span></div></li>
+                        <li class="li3"><span class="left">C+</span><div class="right"><div class="ratiobar"></div><span class="ratiotext">15%</span></div></li>
+                        <li class="li4"><span class="left">B0</span><div class="right"><div class="ratiobar"></div><span class="ratiotext">15%</span></div></li>
+                        <li class="li5"><span class="left">A0</span><div class="right"><div class="ratiobar"></div><span class="ratiotext">12%</span></div></li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- menu -->
+            <div class="menu">
+                <ol>
+                    <li><a id="menu1-1">1학년 1학기</a></li>
+                    <li><a id="menu1-2">1학년 2학기</a></li>
+                    <li><a id="menu2-1">2학년 1학기</a></li>
+                    <li><a id="menu2-2">2학년 2학기</a></li>
+                    <li><a id="menu3-1">3학년 1학기</a></li>
+                    <li><a id="menu3-2">3학년 2학기</a></li>
+                    <li><a id="menu4-1">4학년 1학기</a></li>
+                    <li><a id="menu4-2">4학년 2학기</a></li>
+                </ol>
+            </div>
+
+            <!-- subjects -->
+            <table class="subjects">
+                <caption>
+                    <div class="left">
+                        <h3 id="captionH3">1학년 1학기</h3>
+                        <p>평점 <span id="captionSpan1">3.85</span>전공 <span id="captionSpan2">3.85</span>취득 <span id="captionSpan3">18</span></p>
+                    </div>
+                    <div class="right">
+                        <a>시간표 불러오기</a>
+                    </div>
+                </caption>
+                <tbody>
+                    <tr class="thead">
+                        <th class="att1">과목명</th>
+                        <th class="att2">학점</th>
+                        <th class="att3">성적</th>
+                        <th class="att4">전공</th>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName0"></td>
+                        <td class="att2"><input type="text" min="0" id="credit0"></td>
+                        <td class="att3"><select id="score0">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score0_A+">A+</option>
+                            <option value="A" id="score0_A">A</option>
+                            <option value="B+" id="score0_B+">B+</option>
+                            <option value="B" id="score0_B">B</option>
+                            <option value="C+" id="score0_C+">C+</option>
+                            <option value="C" id="score0_C">C</option>
+                            <option value="D+" id="score0_D+">D+</option>
+                            <option value="D" id="score0_D">D</option>
+                            <option value="P" id="score0_P">P</option>
+                            <option value="F" id="score0_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major0"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName1"></td>
+                        <td class="att2"><input type="text" min="0" id="credit1"></td>
+                        <td class="att3"><select id="score1">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score1_A+">A+</option>
+                            <option value="A" id="score1_A">A</option>
+                            <option value="B+" id="score1_B+">B+</option>
+                            <option value="B" id="score1_B">B</option>
+                            <option value="C+" id="score1_C+">C+</option>
+                            <option value="C" id="score1_C">C</option>
+                            <option value="D+" id="score1_D+">D+</option>
+                            <option value="D" id="score1_D">D</option>
+                            <option value="P" id="score1_P">P</option>
+                            <option value="F" id="score1_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major1"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName2"></td>
+                        <td class="att2"><input type="text" min="0" id="credit2"></td>
+                        <td class="att3"><select id="score2">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score2_A+">A+</option>
+                            <option value="A" id="score2_A">A</option>
+                            <option value="B+" id="score2_B+">B+</option>
+                            <option value="B" id="score2_B">B</option>
+                            <option value="C+" id="score2_C+">C+</option>
+                            <option value="C" id="score2_C">C</option>
+                            <option value="D+" id="score2_D+">D+</option>
+                            <option value="D" id="score2_D">D</option>
+                            <option value="P" id="score2_P">P</option>
+                            <option value="F" id="score2_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major2"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName3"></td>
+                        <td class="att2"><input type="text" min="0" id="credit3"></td>
+                        <td class="att3"><select id="score3">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score3_A+">A+</option>
+                            <option value="A" id="score3_A">A</option>
+                            <option value="B+" id="score3_B+">B+</option>
+                            <option value="B" id="score3_B">B</option>
+                            <option value="C+" id="score3_C+">C+</option>
+                            <option value="C" id="score3_C">C</option>
+                            <option value="D+" id="score3_D+">D+</option>
+                            <option value="D" id="score3_D">D</option>
+                            <option value="P" id="score3_P">P</option>
+                            <option value="F" id="score3_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major3"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName4"></td>
+                        <td class="att2"><input type="text" min="0" id="credit4"></td>
+                        <td class="att3"><select id="score4">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score4_A+">A+</option>
+                            <option value="A" id="score4_A">A</option>
+                            <option value="B+" id="score4_B+">B+</option>
+                            <option value="B" id="score4_B">B</option>
+                            <option value="C+" id="score4_C+">C+</option>
+                            <option value="C" id="score4_C">C</option>
+                            <option value="D+" id="score4_D+">D+</option>
+                            <option value="D" id="score4_D">D</option>
+                            <option value="P" id="score4_P">P</option>
+                            <option value="F" id="score4_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major4"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName5"></td>
+                        <td class="att2"><input type="text" min="0" id="credit5"></td>
+                        <td class="att3"><select id="score5">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score5_A+">A+</option>
+                            <option value="A" id="score5_A">A</option>
+                            <option value="B+" id="score5_B+">B+</option>
+                            <option value="B" id="score5_B">B</option>
+                            <option value="C+" id="score5_C+">C+</option>
+                            <option value="C" id="score5_C">C</option>
+                            <option value="D+" id="score5_D+">D+</option>
+                            <option value="D" id="score5_D">D</option>
+                            <option value="P" id="score5_P">P</option>
+                            <option value="F" id="score5_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major5"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName6"></td>
+                        <td class="att2"><input type="text" min="0" id="credit6"></td>
+                        <td class="att3"><select id="score6">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score6_A+">A+</option>
+                            <option value="A" id="score6_A">A</option>
+                            <option value="B+" id="score6_B+">B+</option>
+                            <option value="B" id="score6_B">B</option>
+                            <option value="C+" id="score6_C+">C+</option>
+                            <option value="C" id="score6_C">C</option>
+                            <option value="D+" id="score6_D+">D+</option>
+                            <option value="D" id="score6_D">D</option>
+                            <option value="P" id="score6_P">P</option>
+                            <option value="F" id="score6_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major6"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName7"></td>
+                        <td class="att2"><input type="text" min="0" id="credit7"></td>
+                        <td class="att3"><select id="score7">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score7_A+">A+</option>
+                            <option value="A" id="score7_A">A</option>
+                            <option value="B+" id="score7_B+">B+</option>
+                            <option value="B" id="score7_B">B</option>
+                            <option value="C+" id="score7_C+">C+</option>
+                            <option value="C" id="score7_C">C</option>
+                            <option value="D+" id="score7_D+">D+</option>
+                            <option value="D" id="score7_D">D</option>
+                            <option value="P" id="score7_P">P</option>
+                            <option value="F" id="score7_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major7"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName8"></td>
+                        <td class="att2"><input type="text" min="0" id="credit8"></td>
+                        <td class="att3"><select id="score8">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score8_A+">A+</option>
+                            <option value="A" id="score8_A">A</option>
+                            <option value="B+" id="score8_B+">B+</option>
+                            <option value="B" id="score8_B">B</option>
+                            <option value="C+" id="score8_C+">C+</option>
+                            <option value="C" id="score8_C">C</option>
+                            <option value="D+" id="score8_D+">D+</option>
+                            <option value="D" id="score8_D">D</option>
+                            <option value="P" id="score8_P">P</option>
+                            <option value="F" id="score8_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major8"></td>
+                    </tr>
+                    <tr>
+                        <td class="att1"><input type="text" maxlength="50" id="subName9"></td>
+                        <td class="att2"><input type="text" min="0" id="credit9"></td>
+                        <td class="att3"><select id="score9">
+                            <option value="N" id="score0_N"> </option>
+                            <option value="A+" id="score9_A+">A+</option>
+                            <option value="A" id="score9_A">A</option>
+                            <option value="B+" id="score9_B+">B+</option>
+                            <option value="B" id="score9_B">B</option>
+                            <option value="C+" id="score9_C+">C+</option>
+                            <option value="C" id="score9_C">C</option>
+                            <option value="D+" id="score9_D+">D+</option>
+                            <option value="D" id="score9_D">D</option>
+                            <option value="P" id="score9_P">P</option>
+                            <option value="F" id="score9_F">F</option>
+                        </select></td>
+                        <td class="att4"><input type="checkbox" id="major9"></td>
+                    </tr>
+                    <tr>
+                        <td class="footOp" colspan="4">
+                            <a>더 입력하기</a>
+                            <a>초기화</a>
+                        </td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+             <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+             </div>
+             <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 012-34-56789</span>
+                <span class="before">직업정보제공사업 신고번호: 01234567891011</span>
+             </div>
+             <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">㈜이젠인사이드</a></span>
+            </div>
+    </footer>
+
+    <script>
+        // 자바스트립트
+        // chart 라이브러리 자바스크립트
+        var options = {
+            chart: {
+                type: 'line',
+            },
+            series: [{
+                name: 'score',
+                data: [4.03,3.21,3.72,3.61,2.6,2.93,3.63,3.5]
+            }],
+            xaxis: {
+                categories: ['1학년1학기','1학년2학기','2학년1학기','2학년2학기','3학년1학기','3학년2학기','4학년1학기','4학년2학기']
+            },
+            background: "transparent",
+            stroke: { width: 3},
+            colors : ["#ff9900"],
+            
+        }
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+        // menu 선택 시 변경되는 동작 총 관리 이벤트 리스너
+        let menuOp = '';
+
+        document.getElementById('menu1-1').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu1-1';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu1-2').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu1-2';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu2-1').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu2-1';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu2-2').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu2-2';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu3-1').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu3-1';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu3-2').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu3-2';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu4-1').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu4-1';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+        document.getElementById('menu4-2').addEventListener('click',(e)=>{
+            addactive(e.target.id);
+            menuOp = 'menu4-2';
+            changeH3(menuOp);
+            printout(menuOp);
+        })
+
+        function addactive(id){
+            document.getElementById('menu1-1').className = '';
+            document.getElementById('menu1-2').className = '';
+            document.getElementById('menu2-1').className = '';
+            document.getElementById('menu2-2').className = '';
+            document.getElementById('menu3-1').className = '';
+            document.getElementById('menu3-2').className = '';
+            document.getElementById('menu4-1').className = '';
+            document.getElementById('menu4-2').className = '';
+            
+            document.getElementById(id).className = 'active';
+        }
+        
+
+        // menu 선택시 table 변경 
+        // caption
+        const captionH3 = document.getElementById('captionH3')
+        function changeH3(menuOp){
+            switch(menuOp){
+                case 'menu1-1' : captionH3.innerText='1학년 1학기'; break;
+                case 'menu1-2' : captionH3.innerText='1학년 2학기'; break;
+                case 'menu2-1' : captionH3.innerText='2학년 1학기'; break;
+                case 'menu2-2' : captionH3.innerText='2학년 2학기'; break;
+                case 'menu3-1' : captionH3.innerText='3학년 1학기'; break;
+                case 'menu3-2' : captionH3.innerText='3학년 2학기'; break;
+                case 'menu4-1' : captionH3.innerText='4학년 1학기'; break;
+                case 'menu4-2' : captionH3.innerText='4학년 2학기'; break;
+            }
+        }
+
+        // 고정으로 넣어둘 정보
+        const arr1_1 = 
+            [
+                {
+                    subName : '말과문화',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                },{
+                    subName : '컴퓨팅사고와문제해결',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                },{
+                    subName : '일반화학1',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '일반화학실험1',
+                    credit : 1,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '일반생물학1',
+                    credit : 3,
+                    score : 'A+',
+                    major : true
+                },{
+                    subName : '미분적분학1',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '기초물리학',
+                    credit : 2,
+                    score : 'A+',
+                    major : true
+                },{
+                    subName : '일반생물학실험1',
+                    credit : 1,
+                    score : 'A+',
+                    major : true
+                }
+            ];
+        const arr1_2 = 
+            [
+                {
+                    subName : '글과삶',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                },{
+                    subName : '일반화학2',
+                    credit : 3,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '일반화학실험2',
+                    credit : 1,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '일반생물학2',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '초급중국어',
+                    credit : 2,
+                    score : 'C+',
+                    major : false
+                },{
+                    subName : '미분적분학2',
+                    credit : 3,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '일반생물학실험2',
+                    credit : 1,
+                    score : 'A+',
+                    major : true
+                },{
+                    subName : '수학과문화',
+                    credit : 2,
+                    score : 'B+',
+                    major : false
+                },{
+                    subName : '쇼프트웨어',
+                    credit : 1,
+                    score : 'P',
+                    major : false
+                }
+            ];
+        const arr2_1 = 
+            [
+                {
+                    subName : '기계비평',
+                    credit : 2,
+                    score : 'P',
+                    major : false
+                },{
+                    subName : '세포생물학',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '생유기화학',
+                    credit : 3,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '생화학실험',
+                    credit : 2,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '대학생화학1',
+                    credit : 3,
+                    score : 'A+',
+                    major : true
+                },{
+                    subName : '생물리화학',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '영어커뮤니케이션1',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                },{
+                    subName : 'PBL',
+                    credit : 1,
+                    score : 'P',
+                    major : false
+                }
+            ];
+        const arr2_2 = 
+            [
+                {
+                    subName : '특허와협상2',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                },{
+                    subName : '면역학',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '분자생물학실험',
+                    credit : 2,
+                    score : 'A',
+                    major : true
+                },{
+                    subName : '분자생물학',
+                    credit : 3,
+                    score : 'B+',
+                    major : true
+                },{
+                    subName : '대학생화학2',
+                    credit : 3,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '미생물학',
+                    credit : 3,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '영어커뮤니케이션2',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                }
+            ];
+        const arr3_1 = 
+            [
+                {
+                    subName : '동서양철학과인권의식',
+                    credit : 2,
+                    score : 'B+',
+                    major : false
+                },{
+                    subName : '분자생물기술론',
+                    credit : 3,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '세포생물학실험',
+                    credit : 2,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '병원미생물학',
+                    credit : 3,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '중간대사론',
+                    credit : 3,
+                    score : 'F',
+                    major : true
+                },{
+                    subName : '기초물리학',
+                    credit : 2,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '유전학',
+                    credit : 3,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '음식과세계문화',
+                    credit : 2,
+                    score : 'A+',
+                    major : false
+                }
+            ];
+        const arr3_2 = 
+            [
+                {
+                    subName : '스타트업초청강연',
+                    credit : 2,
+                    score : 'P',
+                    major : false
+                },{
+                    subName : '면역학실험',
+                    credit : 2,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '분자세포생물학',
+                    credit : 3,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '세포주기학',
+                    credit : 3,
+                    score : 'A',
+                    major : true
+                },{
+                    subName : '생물통계학',
+                    credit : 3,
+                    score : 'C',
+                    major : true
+                },{
+                    subName : '신호전달',
+                    credit : 3,
+                    score : 'B',
+                    major : true
+                },{
+                    subName : '채움과비움',
+                    credit : 2,
+                    score : 'P',
+                    major : false
+                }
+            ];
+        const arr4_1 = 
+            [
+                {
+                    subName : '동양의눈으로본문명교류사',
+                    credit : 2,
+                    score : 'A',
+                    major : false
+                },{
+                    subName : '도시와건축',
+                    credit : 2,
+                    score : 'A',
+                    major : false
+                },{
+                    subName : '고급면역학',
+                    credit : 3,
+                    score : 'A',
+                    major : true
+                },{
+                    subName : '단백질체학',
+                    credit : 3,
+                    score : 'A',
+                    major : true
+                },{
+                    subName : '중간대사론',
+                    credit : 3,
+                    score : 'C+',
+                    major : true
+                },{
+                    subName : '사회봉사',
+                    credit : 1,
+                    score : 'P',
+                    major : false
+                }
+            ];
+        const arr4_2 = [
+                {
+                    subName : '교양프랑스어',
+                    credit : 2,
+                    score : 'B+',
+                    major : false
+                },{
+                    subName : '발생생물학',
+                    credit : 3,
+                    score : 'C',
+                    major : true
+                },{
+                    subName : '암생물학',
+                    credit : 3,
+                    score : 'A',
+                    major : true
+                },{
+                    subName : 'PBl과역량계발',
+                    credit : 1,
+                    score : 'P',
+                    major : false
+                }
+        ];
+
+        function printout(menuOp){
+            for(let i=0; i<10; i++){
+                document.getElementById(`subName${i}`).value = '';
+                document.getElementById(`credit${i}`).value = '';
+                document.getElementById(`major${i}`).removeAttribute('checked');
+                document.getElementById(`score${i}_A+`).removeAttribute('selected');
+                document.getElementById(`score${i}_A`).removeAttribute('selected');
+                document.getElementById(`score${i}_B+`).removeAttribute('selected');
+                document.getElementById(`score${i}_B`).removeAttribute('selected');
+                document.getElementById(`score${i}_C+`).removeAttribute('selected');
+                document.getElementById(`score${i}_C`).removeAttribute('selected');
+                document.getElementById(`score${i}_D+`).removeAttribute('selected');
+                document.getElementById(`score${i}_D`).removeAttribute('selected');
+                document.getElementById(`score${i}_P`).removeAttribute('selected');
+                document.getElementById(`score${i}_F`).removeAttribute('selected');
+            }
+
+            let arr = '';
+            switch(menuOp){
+                case 'menu1-1' : arr = arr1_1; break;
+                case 'menu1-2' : arr = arr1_2; break;
+                case 'menu2-1' : arr = arr2_1; break;
+                case 'menu2-2' : arr = arr2_2; break;
+                case 'menu3-1' : arr = arr3_1; break;
+                case 'menu3-2' : arr = arr3_2; break;
+                case 'menu4-1' : arr = arr4_1; break;
+                case 'menu4-2' : arr = arr4_2; break;
+            }
+
+            for (let i=0; i<arr.length; i++){
+                // 과목명, 학점 변동
+                document.getElementById(`subName${i}`).value = arr[i].subName;
+                document.getElementById(`credit${i}`).value = arr[i].credit;
+                // 전공 checkbox 변동
+                let major = arr[i].major;
+                if(major){
+                    document.getElementById(`major${i}`).setAttribute('checked',true)
+                }else{
+                    document.getElementById(`major${i}`).removeAttribute('checked');
+                }
+                // 성적 select 변동
+                let score = arr[i].score;
+                document.getElementById(`score${i}_${score}`).setAttribute('selected',true)
+
+            }
+            
+            function setCaptionNum(){
+                let totalcredit = 0;
+                for(let i=0; i<arr.length; i++){
+                    totalcredit += Number(arr[i].credit);
+                }
+                document.getElementById('captionSpan3').innerText = totalcredit;
+
+                let scoreNum = 0;
+                let totalscore = 0;
+                for(let i=0; i<arr.length; i++){
+                    switch(arr[i].score){
+                        case 'A+' : scoreNum=4.5; break;
+                        case 'A' : scoreNum=4; break;
+                        case 'B+' : scoreNum=3.5; break;
+                        case 'B' : scoreNum=3; break;
+                        case 'C+' : scoreNum=2.5; break;
+                        case 'C' : scoreNum=2; break;
+                        case 'D+' : scoreNum=1.5; break;
+                        case 'D' : scoreNum=1; break;
+                        case 'P' : scoreNum=4.5; break;
+                        case 'F' : scoreNum=0; break;
+                    }
+                    totalscore += Number(arr[i].credit)*scoreNum;
+                }
+                let avg = totalscore/totalcredit;
+                document.getElementById('captionSpan1').innerText = avg.toFixed(2);
+                document.getElementById('captionSpan2').innerText = avg.toFixed(2);
+
+                
+            }
+            setCaptionNum();
+        }
+
+        let chartboxNum3 = 0;
+        const chartArr = [arr1_1,arr1_2,arr2_1,arr2_2,arr3_1,arr3_2,arr4_1,arr4_2]
+        for(let i=0; i<chartArr.length; i++){
+            for(let j=0; j<chartArr[i].length; j++){
+                chartboxNum3 += Number(chartArr[i][j].credit);
+            }
+        }
+
+        document.getElementById('chartboxNum3').innerText = chartboxNum3;
+
+
+    </script>
+</body>
+</html>

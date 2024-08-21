@@ -16,7 +16,7 @@
             <!-- header -->
             <h1>
                 <a href="">
-                    <img src="../img/img_logo1.png" alt="">
+                    <img src="../img/img_ezenInside2.png" alt="">
                 </a>
             </h1>
             <ul class="top-menu">
@@ -49,7 +49,13 @@
                         <h2 class="post-title">중급중국어청취</h2>
                         <div class="post-meta">
                             <div class="post-author">김민경</div>
-                            <div class="post-rating">★ ★ ★ ★ ☆</div>
+                            <div class="post-rating">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                            </div>
                             <div class="post-date">24년 1학기 수강자</div>
                         </div>
                         <p class="post-preview">                          
@@ -65,7 +71,13 @@
                         <h2 class="post-title">일반화학1</h2>
                         <div class="post-meta">
                             <div class="post-author">박정우</div>
-                            <div class="post-rating">★ ★ ★ ☆ ☆</div>
+                            <div class="post-rating">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                            </div>
                             <div class="post-date">23년 2학기 수강자</div>
                         </div>
                         <p class="post-preview">
@@ -81,7 +93,13 @@
                         <h2 class="post-title">일반화학1</h2>
                         <div class="post-meta">
                             <div class="post-author">신정아</div>
-                            <div class="post-rating">★ ★ ★ ☆ ☆</div>
+                            <div class="post-rating">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                            </div>
                             <div class="post-date">23년 2학기 수강자</div>
                         </div>
                         <p class="post-preview">
@@ -99,8 +117,14 @@
                     <div class="post">
                         <h2 class="post-title">세계시민의식의형성과다문화교육</h2>
                         <div class="post-meta">
-                            <div class="post-author">정호영</div>
-                            <div class="post-rating">★ ★ ★ ★ ★</div>
+                            <div class="post-author"></div>
+                            <div class="post-rating">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                            </div>
                             <div class="post-date">23년 2학기 수강자</div>
                         </div>
                         <p class="post-preview">
@@ -119,7 +143,13 @@
                         <h2 class="post-title">사이버토익</h2>
                         <div class="post-meta">
                             <div class="post-author">진유림</div>
-                            <div class="post-rating">★ ★ ★ ☆ ☆</div>
+                            <div class="post-rating">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                            </div>
                             <div class="post-date">23년 2학기 수강자</div>
                         </div>
                         <p class="post-preview">
@@ -138,7 +168,13 @@
                         <h2 class="post-title">디자인과생활</h2>
                         <div class="post-meta">
                             <div class="post-author">최미정</div>
-                            <div class="post-rating">★ ★ ★ ★ ☆</div>
+                            <div class="post-rating">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/full_star.svg" alt="">
+                                <img src="../img/star_empty.png" alt="">
+                            </div>
                             <div class="post-date">23년 2학기 수강자</div>
                         </div>
                         <p class="post-preview">
@@ -171,7 +207,63 @@
                 <span class="before"><a href="">ㅇㅇㅇ</a></span>
             </div>
     </footer>
-    <script src="../js/강의평가.js"></script>
+    <script>
+        // 페이지 로드 시 JSON 데이터 로드
+        window.onload = loadJsonData;
+
+        let jsonData = {}; //json 데이터 저장
+        // json 데이터 비동기 로드
+        async function loadJsonData() {
+            try {
+                let response = await fetch('../json/전국대학공개강의서비스정보_KOCW_표준데이터.json');
+                if (!response.ok) {
+                    throw new Error('비정상적 응답');
+                }
+                jsonData = await response.json();
+            } catch (error) {
+                console.error('json로딩 에러:', error);
+            }
+        }
+
+        // 검색 기능
+        function performSearch(query) {
+            let resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; 
+            if (query) {
+                let filteredRecords = jsonData.records.filter(record => {
+                    return Object.values(record).some(value =>
+                        value.toLowerCase().includes(query)
+                    );
+                });
+
+                if (filteredRecords.length > 0) {
+                    const resultsHtml = filteredRecords.map(record => {
+                        return `<a href="강의평가개요.html"><div class="result">${Object.entries(record).map(([key, value]) => `<strong>${key}:</strong> ${value}`).join(', ')}</div></a>`;
+                    }).join('');
+                    resultsContainer.innerHTML = resultsHtml;
+                } else {
+                    resultsContainer.innerHTML = '<div class="result">검색 결과가 없습니다.</div>';
+                }
+            }
+        }
+
+        // 검색 아이콘 클릭 시 검색 수행
+        document.getElementById('searchIcon').addEventListener('click', () => {
+            let query = document.getElementById('searchInput').value;
+            performSearch(query);
+            
+        });
+
+        //Enter 키를 눌렀을 때도 검색 수행
+        document.getElementById('searchInput').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                let query = document.getElementById('searchInput').value;
+                performSearch(query);
+            }
+        });
+
+    </script>
 </body>
 
 </html>

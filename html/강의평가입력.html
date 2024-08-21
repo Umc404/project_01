@@ -16,7 +16,7 @@
             <!-- header -->
             <h1>
                 <a href="">
-                    <img src="../img/img_logo1.png" alt="">
+                    <img src="../img/img_ezenInside2.png" alt="">
                 </a>
             </h1>
             <ul class="top-menu">
@@ -37,36 +37,189 @@
     </header>
     <main>
         <!-- 여기부터 작업! -->
-        <div class="inner">
-            <div class="rate">
+        <form action="" id="feedback-form">
+            <div class="inner">
+                <div class="rating-section">
+                    <div class="stars">
+                        <span data-value="1" class="star"><img src="../img/star_empty.png" alt="1 star" class="star-image" data-full="full_star.svg"></span>
+                        <span data-value="2" class="star"><img src="../img/star_empty.png" alt="2 stars" class="star-image" data-full="full_star.svg"></span>
+                        <span data-value="3" class="star"><img src="../img/star_empty.png" alt="3 stars" class="star-image" data-full="full_star.svg"></span>
+                        <span data-value="4" class="star"><img src="../img/star_empty.png" alt="4 stars" class="star-image" data-full="full_star.svg"></span>
+                        <span data-value="5" class="star"><img src="../img/star_empty.png" alt="5 stars" class="star-image" data-full="full_star.svg"></span>
+                    </div>
+                    <p id="rating-display">0/5</p>
+                </div>
 
+                <textarea id="review-text" placeholder="이 강의에 대한 총평을 작성해주세요."></textarea>
+
+                <hr>
+
+                <label for="semester">언제 수강했나요?</label>
+                <select id="semester">
+                    <option>24년 여름</option>
+                    <option>24년 1학기</option>
+                    <option>23년 겨울</option>
+                    <option>23년 2학기</option>
+                    <option>23년 1학기</option>
+                    <option>22년 여름</option>
+                    <option>22년 2학기</option>
+                    <option>22년 1학기</option>
+                </select>
+
+                <div class="homework-section">
+                    <p>과제가 많은가요?</p>
+                    <button type="button" class="homework-button" data-value="많음">많음</button>
+                    <button type="button" class="homework-button" data-value="보통">보통</button>
+                    <button type="button" class="homework-button" data-value="없음">없음</button>
+                </div>
+                <div class="homework-section">
+                    <p>조모임이 많은가요?</p>
+                    <button type="button" class="homework-button" data-value="많음">많음</button>
+                    <button type="button" class="homework-button" data-value="보통">보통</button>
+                    <button type="button" class="homework-button" data-value="없음">없음</button>
+                </div>
+                <div class="homework-section">
+                    <p>성적은 어떻게 주시나요?</p>
+                    <button type="button" class="homework-button" data-value="너그러움">너그러움</button>
+                    <button type="button" class="homework-button" data-value="보통">보통</button>
+                    <button type="button" class="homework-button" data-value="깐깐함">깐깐함</button>
+                </div>
+                <div class="homework-section">
+                    <p>출석은 어떻게 확인하나요?</p>
+                    <button type="button" class="homework-button" data-value="복합적">복합적</button>
+                    <button type="button" class="homework-button" data-value="직접호명">직접호명</button>
+                    <button type="button" class="homework-button" data-value="지정좌석">지정좌석</button>
+                    <button type="button" class="homework-button" data-value="전자출결">전자출결</button>
+                    <button type="button" class="homework-button" data-value="반영안함">반영안함</button>
+                </div>
+                <div class="homework-section">
+                    <p>시험은 몇 번 보나요?</p>
+                    <button type="button" class="homework-button" data-value="네 번 이상">네 번 이상</button>
+                    <button type="button" class="homework-button" data-value="세 번">세 번</button>
+                    <button type="button" class="homework-button" data-value="두 번">두 번</button>
+                    <button type="button" class="homework-button" data-value="한 번">한 번</button>
+                    <button type="button" class="homework-button" data-value="없음">없음</button>
+                </div>
+                <div class="noti">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <button type="button" id="submit-btn">평가하기</button>
             </div>
-            
+        </form>
+    </main>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+            <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+            </div>
+            <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 000-00-00000</span>
+                <span class="before">직업정보제공사업 신고번호: 0*14</span>
+            </div>
+            <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">ㅇㅇㅇ</a></span>
+            </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 별점 처리
+            const stars = document.querySelectorAll('.stars .star');
+            const ratingDisplay = document.getElementById('rating-display');
+            let rating = '';
 
+            stars.forEach(star => {
+                star.addEventListener('mouseover', () => {
+                    const value = star.getAttribute('data-value');
+                    updateStars(value, 'active');
+                });
 
-            <footer>
-                <div class="inner">
-                    <!-- footer -->
-                    <div class="top-title bold">
-                        <span>이젠 아카데미 학원</span>
-                    </div>
-                    <div class="middle">
-                        <span>인천광역시</span>
-                        <span class="before">사업자등록번호: 000-00-00000</span>
-                        <span class="before">직업정보제공사업 신고번호: 0*14</span>
-                    </div>
-                    <div class="bottom">
-                        <span><a href="">이용약관</a></span>
-                        <span class="before bold"><a href="">개인정보처리방침</a></span>
-                        <span class="before"><a href="">청소년보호정책</a></span>
-                        <span class="before"><a href="">커뮤니티이용규칙</a></span>
-                        <span class="before"><a href="">문의하기</a></span>
-                        <span class="before"><a href="">ㅇㅇㅇ</a></span>
-                    </div>
-            </footer>
+                star.addEventListener('mouseout', () => {
+                    updateStars(rating, 'active');
+                });
 
+                star.addEventListener('click', () => {
+                    const value = star.getAttribute('data-value');
+                    stars.forEach(s => {
+                        s.classList.toggle('active', s.getAttribute('data-value') <= value);
+                    });
+                    ratingDisplay.textContent = `${value}/5`;
+                    rating = value;
+                });
+            });
 
-            
+            function updateStars(value, className) {
+                stars.forEach(star => {
+                    const starValue = parseInt(star.getAttribute('data-value'));
+                    const img = star.querySelector('img');
+                    img.src = starValue <= value ? '../img/full_star.svg' : '../img/star_empty.png';
+                });
+            }
+
+            // 각 항목별로 버튼 클릭 처리
+            const buttonGroups = document.querySelectorAll('.homework-section');
+
+            buttonGroups.forEach((group, index) => {
+                const buttons = group.querySelectorAll('.homework-button');
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        console.log(`Button clicked in group ${index + 1}: ${button.getAttribute('data-value')}`);
+                    });
+                });
+            });
+
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                // 별점 값 가져오기
+                const reviewText = document.getElementById('review-text').value;
+                const semester = document.getElementById('semester').value;
+
+                // 각 버튼 그룹의 선택된 값 가져오기
+                const getSelectedValue = (index) => {
+                    const activeButton = document.querySelector(`.homework-section:nth-of-type(${index}) .homework-button.active`);
+                    return activeButton ? activeButton.getAttribute('data-value') : '';
+                };
+
+                const homework = getSelectedValue(2);
+                const studyGroup = getSelectedValue(3);
+                const grading = getSelectedValue(4);
+                const attendance = getSelectedValue(5);
+                const exams = getSelectedValue(6);
+
+                // 기존 데이터 불러오기
+                let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                
+                // 새 리뷰 추가
+                reviews.push({
+                    rating,
+                    reviewText,
+                    semester,
+                    homework,
+                    studyGroup,
+                    grading,
+                    attendance,
+                    exams
+                });
+
+                // 배열을 JSON 문자열로 변환하여 저장
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+
+                // 페이지 이동
+                window.location.href = '강의평가목록.html';
+            });
+        });
+
+    </script>
 </body>
 
 </html>

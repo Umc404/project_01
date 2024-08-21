@@ -1,7 +1,14 @@
+/*공통*/
+* {
+    box-sizing: border-box;
+}
+.dp-block{
+    display: block !important;
+}
 main>.inner{
     width: 1280px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     margin: 0 auto;
     padding: 20px 0px;
 }
@@ -99,9 +106,9 @@ main>.inner>.board-list>a>.post>.post-meta {
     color: #737373;
     margin-bottom: 10px;
 }
-main>.inner>.board-list>a>.post>.post-meta .post-rating {
-    font-size: 20px; 
-    color: gold;
+main>.inner>.board-list>a>.post>.post-meta .post-rating>img {
+    width: 20px;
+    height: 20px;
     margin-bottom: 10px;
 }
 main>.inner>.board-list>a>.post>.post-meta>.post-author {
@@ -163,18 +170,56 @@ main>.inner>.board-list>a>.post>.post-meta .post-date {
 .bar .gauge.winner {
     background-color: #FFBB00; 
 }
+main>.inner-detail{
+    padding-top: 40px;
+}
+main>.inner>.detail-search{
+    margin-top: 0px;
+}
+main>.inner>.detail-search>p{
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+main>.inner>.detail-search>a>p{
+    font-size: 24px;
+    line-height: 38px;
+}
 main>.inner>.search>.item{
     display: flex;
     justify-content: left;
+    margin-top: 20px;
+    gap: 10px;
 }
 main>.inner>.search>.item>img{
-    width: 24px;
-    height: 24px;
+    width: 38px;
+    height: 38px;
 }
 section.box{
     border: 1px solid rgb(237, 237, 237);
     border-radius: 12px;
     padding: 20px;
+    margin-bottom: 20px;
+}
+main>.inner>.board-list>.box{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+main>.inner>.board-list>.box>.info{
+    display: flex;
+    justify-content: left;
+}
+main>.inner>.board-list>.box>.info>div:nth-of-type(1){
+    width: 100px;
+}
+main>.inner-detail>.board-list>.box>.rating>.title{
+    padding: 20px 20px 0 20px;
+    font-size: 30px;
+}
+main>.inner-detail>.board-list>.box>.rating>.title>span:nth-of-type(2)>img{
+    width: 50px;
+    height: 50px;
 }
 main>.inner>.board-list>section>.rating>.rates>.rate:nth-of-type(1)>.value{
     font-weight: 600;
@@ -188,6 +233,11 @@ main>.inner>.board-list>section>.subject{
     justify-content: space-between;
     padding: 0 20px 20px 20px;
 }
+main>.inner>.board-list>section>.object{
+    display: flex;
+    justify-content: left;
+    padding: 0 20px 20px 20px;
+}
 main>.inner>.board-list>section>.subject>.sub-center{
     width: calc(100% - 140px);
     margin: 0 15px;
@@ -196,7 +246,17 @@ main>.inner>.board-list>section>ul>li:first-child{
     text-align: left; 
     width: 70px
 }
-main>.inner>.board-list>section>.subject>.sub-left{
+main>.inner>.board-list>section>.object>.sub-center{
+    display: flex;
+    justify-content: left;
+}
+main>.inner>.board-list>section>.object>.sub-center>div{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 0 0 10px;
+}
+main>.inner>.board-list>section>.subject>.sub-left,
+main>.inner>.board-list>section>.object>li:nth-of-type(1){
     height: 30px;
     line-height: 30px;
     font-size: 20px;
@@ -215,8 +275,20 @@ main>.inner>.board-list>section>.subject:nth-of-type(1)>.sub-right>div:nth-of-ty
     color: rgb(43, 207, 14);
     font-weight: 600;
 }
+main>.inner>.board-list>section>.subject:nth-of-type(2)>.sub-right>div:nth-of-type(2){
+    color: #056AB5;
+    font-weight: 600;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-right>div:nth-of-type(3){
+    color: #FFA100;
+    font-weight: 600;
+}
 main>.inner>.board-list>section>.subject:nth-of-type(1)>.sub-right>div:nth-of-type(2),
-main>.inner>.board-list>section>.subject:nth-of-type(1)>.sub-right>div:nth-of-type(3){
+main>.inner>.board-list>section>.subject:nth-of-type(1)>.sub-right>div:nth-of-type(3),
+main>.inner>.board-list>section>.subject:nth-of-type(2)>.sub-right>div:nth-of-type(1),
+main>.inner>.board-list>section>.subject:nth-of-type(2)>.sub-right>div:nth-of-type(3),
+main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-right>div:nth-of-type(1),
+main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-right>div:nth-of-type(2){
     color: #737373;
 }
 main>.inner>.board-list>section>.object{
@@ -251,4 +323,170 @@ main>.inner>.board-list>section>.subject:nth-of-type(1)>.sub-center>.subject-bar
     background-color: #F2F2F2;
     width: 12%;
     color: #737373;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(2)>.sub-center>.subject-bar:nth-of-type(1)>div{
+    background-color: #F2F2F2;
+    width: 8%;
+    color: #737373;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(2)>.sub-center>.subject-bar:nth-of-type(2)>div{
+    background-color: rgba(59, 90, 153, 0.2);
+    font-weight: 600;
+    width: 58%;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(2)>.sub-center>.subject-bar:nth-of-type(3)>div{
+    background-color: #F2F2F2;
+    width: 33%;
+    color: #737373;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-center>.subject-bar:nth-of-type(1)>div{
+    background-color: #F2F2F2;
+    width: 25%;
+    color: #737373;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-center>.subject-bar:nth-of-type(2)>div{
+    background-color: #F2F2F2;
+    width: 8%;
+    color: #737373;
+}
+main>.inner>.board-list>section>.subject:nth-of-type(3)>.sub-center>.subject-bar:nth-of-type(3)>div{
+    background-color: rgba(255, 168, 31, 0.2);
+    width: 67%;
+    font-weight: 600;
+}
+
+/* 강의평가목록 */
+main>.inner>.search>.write{
+    border: 1px solid #FFA100;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    width: 80%;
+    padding: 20px;
+    font-size: large;
+}
+.star-rating {
+    font-size: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.star-rating img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.review {
+    margin-bottom: 20px;
+}
+.review h2 {
+    margin: 0 0 10px;
+}
+.review p {
+    margin: 5px 0;
+}
+
+/* 강의평가입력 */
+main>form>.inner{
+    width: 1280px;
+    justify-content: left;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
+.rating-section {
+    margin-bottom: 20px;
+    display: flex;
+}
+.stars {
+    display: flex;
+}
+.star {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 2px;
+}
+.star img {
+    width: 24px; 
+    height: 24px; 
+}
+.star img.active {
+    content: url(../img/full_star.svg);
+}
+#rating-display {
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1em;
+}
+hr {
+    margin: 20px 0;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+.homework-section {
+    margin-top: 20px;
+}
+.homework-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.homework-button.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+.rating-container {
+    display: flex;
+    align-items: center;
+}
+.stars {
+    font-size: 2em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.homework-buttons {
+    display: flex;
+    gap: 10px;
+}
+.homework-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.homework-button.active {
+    background-color: #FFA100;
+    color: white;
+    border: 1px solid #FFA100;
 }
