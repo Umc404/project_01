@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/강의평가.css">
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <!-- header -->
+            <h1>
+                <a href="">
+                    <img src="../img/img_ezenInside2.png" alt="">
+                </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="">로그인</a></li>
+                <li><a href="">내정보</a></li>
+                <li><a href="">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="" class="stress">공지사항</a></li>
+                    <li><a href="" class="stress">자유게시판</a></li>
+                    <li><a href="" class="stress">시간표</a></li>
+                    <li><a href="" class="stress">강의평가</a></li>
+                    <li><a href="" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- 여기부터 작업! -->
+        <form action="" id="feedback-form" class="sk-fd">
+            <div class="inner">
+                <label for="semester">응시한 시험</label>
+                <div class="semester-group">
+                    <select id="semester" class="se-me">
+                        <option value="" selected disabled>수강 학기 선택</option>
+                        <option>24년 여름</option>
+                        <option>24년 1학기</option>
+                        <option>23년 겨울</option>
+                        <option>23년 2학기</option>
+                        <option>23년 여름</option>
+                        <option>23년 1학기</option>
+                        <option>22년 겨울</option>
+                        <option>22년 2학기</option>
+                        <option>22년 여름</option>
+                    </select>
+                    <select id="semester" class="se-me">
+                        <option value="" selected disabled>시험 회차 선택</option>
+                        <option>중간고사</option>
+                        <option>기말고사</option>
+                        <option>1차</option>
+                        <option>2차</option>
+                        <option>3차</option>
+                        <option>4차</option>
+                        <option>기타</option>
+                    </select>
+                </div>
+                <div class="sk-title">시험 전략</div>
+                <textarea id="review-text" placeholder="시험에 대한 전략, 공부 방법, 노하우를 자유롭게 적어주세요."></textarea>
+
+                <div class="sk-title">문제 유형</div>
+                <span class="sub-tt">(복수선택)</span>
+                <div class="homework-section">
+                    <button type="button" class="homework-button" data-value="객관식">객관식</button>
+                    <button type="button" class="homework-button" data-value="주관식">주관식</button>
+                    <button type="button" class="homework-button" data-value="T/F형">T/F형</button>
+                    <button type="button" class="homework-button" data-value="약술형">약술형</button>
+                    <button type="button" class="homework-button" data-value="논술형">논술형</button>
+                    <button type="button" class="homework-button" data-value="구술">구술</button>
+                    <button type="button" class="homework-button" data-value="기타">기타</button>
+                </div>
+
+                <div class="sk-title">문제 예시</div>
+                <span class="sub-tt">예&#41; 게임이론의 정의와 두 가지 이상의 사례를 작성하시오.</span>
+                <div id="sk-fields">
+                    <div class="sk-container">
+                        <span class="label-sk">1.</span>
+                        <input type="text" name="input1" class="input-sk">
+                    </div>
+                    <div class="sk-container">
+                        <span class="label-sk">2.</span>
+                        <input type="text" name="input2" class="input-sk">
+                    </div>
+                </div>
+                <a id="add-input-btn">
+                    <img src="../img/add_gray.png" alt="">
+                    더 입력하기
+                </a>
+                
+                <div class="noti">
+                    <p>
+                        ※ 시험정보를 등록하면 
+                        <strong>20 포인트</strong>가 적립됩니다.
+                    </p>
+                    <p> 
+                        ※ <strong>수정 및 삭제가 불가능</strong>하므로
+                        신중히 작성해주세요.
+                    </p>
+                    <p>
+                        ※ 허위, 중복, 저작권 침해, 성의없는 내용을 작성할 경우, 서비스 이용이 제한될 수 있습니다.
+                    </p>
+                </div>
+                <button type="button" id="submit-btn">등록하기</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+            <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+            </div>
+            <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 000-00-00000</span>
+                <span class="before">직업정보제공사업 신고번호: 0*14</span>
+            </div>
+            <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">ㅇㅇㅇ</a></span>
+            </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 각 항목별로 버튼 클릭 처리
+            const buttonGroups = document.querySelectorAll('.homework-section');
+            buttonGroups.forEach((group, index) => {
+                const buttons = group.querySelectorAll('.homework-button');
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // 클릭된 버튼의 'active' 클래스를 토글
+                        button.classList.toggle('active');
+                        console.log(`Button clicked in group ${index + 1}: ${button.getAttribute('data-value')}`);
+                    });
+                });
+            });
+
+            //동적 입력 필드 추가
+            const addButton = document.getElementById('add-input-btn');
+            const inputFieldsContainer = document.getElementById('sk-fields');
+            let inputCount = 2; // 초기 입력 필드 개수
+
+            addButton.addEventListener('click', () => {
+                inputCount++; // 입력 필드 개수 증가
+                const newInputContainer = document.createElement('div');
+                newInputContainer.classList.add('sk-container');
+                newInputContainer.innerHTML = `
+                    <span class="label-sk">${inputCount}.</span>
+                    <input type="text" name="input${inputCount}" class="input-sk">
+                `;
+                inputFieldsContainer.appendChild(newInputContainer);
+            });
+
+            // 페이지 이동
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                window.location.href = '강의시험목록.html';
+            });
+        });
+
+    </script>
+</body>
+
+</html>
