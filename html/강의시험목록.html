@@ -1,11 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/강의평가.css">
 </head>
 <body>
-    
+    <header>
+        <div class="inner">
+            <!-- header -->
+            <h1>
+                <a href="">
+                    <img src="../img/img_ezenInside2.png" alt="">
+                </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="">로그인</a></li>
+                <li><a href="">내정보</a></li>
+                <li><a href="">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="" class="stress">공지사항</a></li>
+                    <li><a href="" class="stress">자유게시판</a></li>
+                    <li><a href="" class="stress">시간표</a></li>
+                    <li><a href="" class="stress">강의평가</a></li>
+                    <li><a href="" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="inner inner-detail">
+            <div class="search detail-search">
+                <p>일반화학1</p>
+                <a href="강의평가개요.html" class="item">
+                    <img src="../img/info.png" alt="">
+                    <p>개요</p>
+                </a>
+                <a href="강의평가목록.html" class="item">
+                    <img src="../img/rating.png" alt="">
+                    <p>강의평</p>
+                </a>
+                <a href="" class="item stress">
+                    <img src="../img/exam.png" alt="">
+                    <p>시험 정보</p>
+                </a>
+                <a href="강의평가입력.html" class="write">
+                    등록하기
+                </a>
+            </div>
+            <div class="board-list feedback-list exam-list">
+                <div class="feedback-header">
+                    <a class="average" id="average-link">
+                        <img src="../img/off_light.png" alt="" id="average-img">
+                        <span id="average-text">
+                            열람한 정보
+                        </span>
+                    </a>
+                    <div class="buttons">
+                        <div class="btn1" name="" id="">
+                            <span class="selected">
+                                <span>
+                                    전체
+                                </span>
+                                <img src="../img/arrow_down.png" alt="">
+                            </span>
+                            <div class="custom-options">
+                                <div class="option" data-value="">
+                                    중간고사
+                                </div>
+                                <div class="option" data-value="">
+                                    기말고사
+                                </div>
+                                <div class="option" data-value="">
+                                    1차
+                                </div>
+                                <div class="option" data-value="">
+                                    2차
+                                </div>
+                                <div class="option" data-value="">
+                                    3차
+                                </div>
+                                <div class="option" data-value="">
+                                    4차
+                                </div>
+                                <div class="option" data-value="">
+                                    기타
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn1" name="" id="">
+                            <span class="selected">
+                                <span>
+                                    등록순
+                                </span>
+                                <img src="../img/arrow_down.png" alt="">
+                            </span>
+                            <div class="custom-options">
+                                <div class="option" data-value="">
+                                    등록순
+                                </div>
+                                <div class="option" data-value="">
+                                    만족도순
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="exam-article">
+                    <div class="exam-header">
+                        <h3>기말고사</h3>
+                    </div>
+                    <div class="info">
+                        <span class="semester">23년 2학기 수강자</span>
+                        <span>
+                            <img src="../img/ddabong.svg" alt="">
+                            <p>1</p>
+                        </span>
+                    </div>
+                    <div class="pay">
+                        <div class="message">
+                            <p>
+                                이 정보를 열람하기 위해 <strong>5 포인트</strong>가
+                                차감됩니다.
+                            </p>
+                            <p>
+                                한 번 열람한 후에는 영구적으로 볼 수 있습니다.
+                            </p>
+                            <button type="button">열람하기</button>
+                        </div>
+                    </div>
+                    <div class="contents-blur"></div>
+                </div>
+                <div class="exam-article">
+                    <div class="exam-header">
+                        <h3>기말고사</h3>
+                    </div>
+                    <div class="info">
+                        <span class="semester">23년 2학기 수강자</span>
+                        <span>
+                            <img src="../img/ddabong.svg" alt="">
+                            <p>1</p>
+                        </span>
+                    </div>
+                    <div class="pay">
+                        <div class="message">
+                            <p>
+                                이 정보를 열람하기 위해 <strong>5 포인트</strong>가
+                                차감됩니다.
+                            </p>
+                            <p>
+                                한 번 열람한 후에는 영구적으로 볼 수 있습니다.
+                            </p>
+                            <button type="button">열람하기</button>
+                        </div>
+                    </div>
+                    <div class="contents-blur"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+            <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+            </div>
+            <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 000-00-00000</span>
+                <span class="before">직업정보제공사업 신고번호: 0*14</span>
+            </div>
+            <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">ㅇㅇㅇ</a></span>
+            </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var averageLink = document.getElementById('average-link');
+
+            averageLink.addEventListener('click', function(e) {
+                e.preventDefault(); // 링크의 기본 동작 X
+
+                // 클릭 시 'active' 클래스를 토글
+                this.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
-</html>

@@ -46,13 +46,96 @@
                     <img src="../img/rating.png" alt="">
                     <p>강의평</p>
                 </a>
-                <a href="" class="item">
+                <a href="강의시험목록.html" class="item">
                     <img src="../img/exam.png" alt="">
                     <p>시험 정보</p>
                 </a>
-                <a href="강의평가입력.html" class="write">평가하기</a>
+                <a href="강의평가입력.html" class="write">
+                    평가하기
+                </a>
             </div>
-            <div class="board-list">
+            <div class="board-list feedback-list">
+                <div class="feedback-header">
+                    <div class="average">
+                        <span class="title">4.02</span>
+                        <span class="star">
+                            <img src="../img/full_star.svg" alt="">
+                            <img src="../img/full_star.svg" alt="">
+                            <img src="../img/full_star.svg" alt="">
+                            <img src="../img/full_star.svg" alt="">
+                            <img src="../img/star_empty.png" alt="">
+                        </span>
+                    </div>
+                    <div class="buttons">
+                        <div class="btn1" name="" id="">
+                            <span class="selected">
+                                <span>
+                                    전체
+                                </span>
+                                <img src="../img/arrow_down.png" alt="">
+                            </span>
+                            <div class="custom-options">
+                                <div class="option" data-value="">
+                                    전체
+                                    <span>
+                                        (35)
+                                    </span>
+                                </div>
+                                <div class="option" data-value="">
+                                    <img src="../img/full_star.svg" alt="">
+                                    <p>5</p>
+                                    <span>
+                                        (7)
+                                    </span>
+                                </div>
+                                <div class="option" data-value="">
+                                    <img src="../img/full_star.svg" alt="">
+                                    <p>4</p>
+                                    <span>
+                                        (15)
+                                    </span>
+                                </div>
+                                <div class="option" data-value="">
+                                    <img src="../img/full_star.svg" alt="">
+                                    <p>3</p>
+                                    <span>
+                                        (10)
+                                    </span>
+                                </div>
+                                <div class="option" data-value="">
+                                    <img src="../img/full_star.svg" alt="">
+                                    <p>2</p>
+                                    <span>
+                                        (2)
+                                    </span>
+                                </div>
+                                <div class="option" data-value="">
+                                    <img src="../img/full_star.svg" alt="">
+                                    <p>1</p>
+                                    <span>
+                                        (1)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn1" name="" id="">
+                            <span class="selected">
+                                <span>
+                                    등록순
+                                </span>
+                                <img src="../img/arrow_down.png" alt="">
+                            </span>
+                            <div class="custom-options">
+                                <div class="option" data-value="">
+                                    등록순
+                                </div>
+                                <div class="option" data-value="">
+                                    추천순
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="feedback-display">
                     <!-- 여기에 평가 결과가 표시됩니다 -->
                 </div>
@@ -104,16 +187,38 @@
 
             // 데이터를 화면에 표시하기
             if (sortedReviews.length === 0) {
-                reviewDisplay.innerHTML = '<p>작성된 리뷰가 없습니다.</p>';
+                reviewDisplay.innerHTML = `
+                <div class="review">
+                    <p class="text">작성된 리뷰가 없습니다.</p>
+                </div>
+                `;
             } else {
                 reviewDisplay.innerHTML = sortedReviews.map((review, index) => `
                     <div class="review">
-                        <div class="star-rating">
-                            ${getStarRatingHtml(review.rating)}
+                        <div class="review-header">
+                            <div class="title">
+                                <div class="star-rating">
+                                    ${getStarRatingHtml(review.rating)}
+                                </div>
+                                <span>
+                                    <p>24년 1학기 수강자</p>
+                                    <p>
+                                        <span><img src="../img/ddabong.svg"></span>
+                                        <span>1</span>
+                                    </p>
+                                </span>   
+                            </div> 
+                            <div class="btns">
+                                <button class="btn1" type="button">
+                                    <img src="../img/ddabong_gray.png">
+                                    <p>추천</p>
+                                </button>
+                                <button class="btn2" type="button">신고</button>
+                            </div>
                         </div>
-                        <p>24년 1학기 수강자</p>
-                        <p>${review.reviewText || '작성된 강의평이 없습니다.'}</p>
+                        <p class="text">${review.reviewText || '작성된 강의평이 없습니다.'}</p>
                     </div>
+                    <div class="line-div"></div>
                 `).join('');
             }
         });

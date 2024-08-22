@@ -47,15 +47,16 @@
                         <span data-value="4" class="star"><img src="../img/star_empty.png" alt="4 stars" class="star-image" data-full="full_star.svg"></span>
                         <span data-value="5" class="star"><img src="../img/star_empty.png" alt="5 stars" class="star-image" data-full="full_star.svg"></span>
                     </div>
-                    <p id="rating-display">0/5</p>
+                    <p id="rating-display">0 / 5</p>
                 </div>
 
                 <textarea id="review-text" placeholder="이 강의에 대한 총평을 작성해주세요."></textarea>
 
-                <hr>
+                <div class="line-div"></div>
 
                 <label for="semester">언제 수강했나요?</label>
                 <select id="semester">
+                    <option value="" selected disabled>수강 학기 선택</option>
                     <option>24년 여름</option>
                     <option>24년 1학기</option>
                     <option>23년 겨울</option>
@@ -65,7 +66,6 @@
                     <option>22년 2학기</option>
                     <option>22년 1학기</option>
                 </select>
-
                 <div class="homework-section">
                     <p>과제가 많은가요?</p>
                     <button type="button" class="homework-button" data-value="많음">많음</button>
@@ -101,9 +101,17 @@
                     <button type="button" class="homework-button" data-value="없음">없음</button>
                 </div>
                 <div class="noti">
-                    <p></p>
-                    <p></p>
-                    <p></p>
+                    <p>
+                        ※ 강의평을 등록하면 
+                        <strong>10 포인트</strong>가 적립됩니다.
+                    </p>
+                    <p> 
+                        ※ <strong>수정 및 삭제가 불가능</strong>하므로
+                        신중히 작성해주세요.
+                    </p>
+                    <p>
+                        ※ 허위, 중복, 저작권 침해, 성의없는 내용을 작성할 경우, 서비스 이용이 제한될 수 있습니다.
+                    </p>
                 </div>
                 <button type="button" id="submit-btn">평가하기</button>
             </div>
@@ -151,7 +159,7 @@
                     stars.forEach(s => {
                         s.classList.toggle('active', s.getAttribute('data-value') <= value);
                     });
-                    ratingDisplay.textContent = `${value}/5`;
+                    ratingDisplay.textContent = `${value} / 5`;
                     rating = value;
                 });
             });
