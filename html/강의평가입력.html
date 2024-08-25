@@ -20,17 +20,17 @@
                 </a>
             </h1>
             <ul class="top-menu">
-                <li><a href="">로그인</a></li>
-                <li><a href="">내정보</a></li>
-                <li><a href="">쪽지</a></li>
+                <li><a href="메인.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
             </ul>
             <nav class="nav">
                 <ul>
-                    <li><a href="" class="stress">공지사항</a></li>
-                    <li><a href="" class="stress">자유게시판</a></li>
-                    <li><a href="" class="stress">시간표</a></li>
-                    <li><a href="" class="stress">강의평가</a></li>
-                    <li><a href="" class="stress">학점계산기</a></li>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
                 </ul>
             </nav>
         </div>
@@ -139,6 +139,38 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            function setLocalStorage(key, value){ localStorage.setItem(key,JSON.stringify(value)); } 
+            function getLocalStorage(key){ return JSON.parse(localStorage.getItem(key)); }
+
+            let myObj = getLocalStorage('loginInfomation');
+            let myId = myObj.id;
+            let loginOp = 'guest'
+            const loginText = document.getElementById('loginText');
+
+            console.log(loginOp)
+            if(myId == ''){
+                loginOp = 'guest'
+                loginText.innerText = '로그인'
+            }else if(myId.includes('admin')){
+                loginOp = 'master'
+                loginText.innerText = '로그아웃'
+            }else if(myId != ''){
+                loginOp = 'user'
+                loginText.innerText = '로그아웃'
+            }
+
+            // 로그인 로그아웃 관리자 별로 다른 UI 제공
+            document.getElementById('loginText').addEventListener('click',(e)=>{
+                e.preventDefault();
+                if(document.getElementById('loginText').innerText == '로그인'){
+                    location.href = "login.html";
+                }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                    setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                    location.href = "메인.html";
+                }
+            })
+
+
             // 별점 처리
             const stars = document.querySelectorAll('.stars .star');
             const ratingDisplay = document.getElementById('rating-display');
@@ -188,6 +220,36 @@
             });
 
             document.getElementById('submit-btn').addEventListener('click', () => {
+                function setLocalStorage(key, value){ localStorage.setItem(key,JSON.stringify(value)); } 
+                function getLocalStorage(key){ return JSON.parse(localStorage.getItem(key)); }
+
+                let myObj = getLocalStorage('loginInfomation');
+                let myId = myObj.id;
+                let loginOp = 'guest'
+                const loginText = document.getElementById('loginText');
+
+                console.log(loginOp)
+                if(myId == ''){
+                    loginOp = 'guest'
+                    loginText.innerText = '로그인'
+                }else if(myId.includes('admin')){
+                    loginOp = 'master'
+                    loginText.innerText = '로그아웃'
+                }else if(myId != ''){
+                    loginOp = 'user'
+                    loginText.innerText = '로그아웃'
+                }
+
+                // 로그인 로그아웃 관리자 별로 다른 UI 제공
+                document.getElementById('loginText').addEventListener('click',(e)=>{
+                    e.preventDefault();
+                    if(document.getElementById('loginText').innerText == '로그인'){
+                        location.href = "login.html";
+                    }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                        setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                        location.href = "메인.html";
+                    }
+                })
                 // 별점 값 가져오기
                 const reviewText = document.getElementById('review-text').value;
                 const semester = document.getElementById('semester').value;

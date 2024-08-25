@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 수정</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/modify.css">
+</head>
+<body>
+    <header>
+        <div class = "inner">
+            <!-- header -->
+            <h1>
+            <a href="메인.html">
+                <img src="../img/img_ezenInside2.png" alt="">
+            </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="login.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
+            </nav>
+        </div>
+    </header>
+    <div class="write">
+        <!-- <form action="board.html" method="post"> -->
+        <!-- <form action="board_hfJoin.html" method="post"> -->
+            <table> 
+                <tr>
+                    <td>
+                        <h2>글쓰기</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="header">Title</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder='제목을 입력하세요' name="title" id="notice_title">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="header">Comment</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea placeholder="내용을 입력하세요" name="detail" id="notice_content"></textarea>
+                    </td>
+                </tr>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <button onclick="location.href='notice_board.html'">목록</button>
+                            <button onclick="modifyCont()">수정</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        <!-- </form> -->
+    </div>
+    <script src="../js/notice_modify.js"></script>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+             <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+             </div>
+             <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 000-00-00000</span>
+                <span class="before">직업정보제공사업 신고번호: 0*14</span>
+             </div>
+             <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">ㅇㅇㅇ</a></span>
+            </div>
+    </footer>
+</body>
+</html>

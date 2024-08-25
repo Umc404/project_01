@@ -326,7 +326,12 @@
             margin-right: 10px;
         }
 
-
+        .logout_h3{
+            margin: 20px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -335,22 +340,22 @@
         <div class = "inner">
             <!-- header -->
             <h1>
-            <a href="">
+            <a href="메인.html">
                 <img src="../img/img_ezenInside2.png" alt="">
             </a>
             </h1>
             <ul class="top-menu">
-                <li><a href="">로그인</a></li>
-                <li><a href="">내정보</a></li>
-                <li><a href="">쪽지</a></li>
+                <li><a href="login.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
             </ul>
             <nav class="nav">
                 <ul>
-                    <li><a href="" class="stress">공지사항</a></li>
-                    <li><a href="" class="stress">자유게시판</a></li>
-                    <li><a href="" class="stress">시간표</a></li>
-                    <li><a href="" class="stress">강의평가</a></li>
-                    <li><a href="" class="stress">학점계산기</a></li>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
                 </ul>
             </nav>
         </div>
@@ -358,7 +363,7 @@
 
     <main>
         <div class="inner">
-            <div class="chart">
+            <div class="chart" id="chartBox">
                 <article class="overview">
                     <div class="box box1">
                         <h4>전체 평점</h4>
@@ -639,26 +644,66 @@
     </footer>
 
     <script>
-        // 자바스트립트
-        // chart 라이브러리 자바스크립트
-        var options = {
-            chart: {
-                type: 'line',
-            },
-            series: [{
-                name: 'score',
-                data: [4.03,3.21,3.72,3.61,2.6,2.93,3.63,3.5]
-            }],
-            xaxis: {
-                categories: ['1학년1학기','1학년2학기','2학년1학기','2학년2학기','3학년1학기','3학년2학기','4학년1학기','4학년2학기']
-            },
-            background: "transparent",
-            stroke: { width: 3},
-            colors : ["#ff9900"],
-            
+        function getLocalStorage(key){ return JSON.parse(localStorage.getItem(key)); }
+        function setLocalStorage(key, value){ localStorage.setItem(key,JSON.stringify(value)); } 
+
+        let myObj = getLocalStorage('loginInfomation');
+        let myId = myObj.id;
+        let loginOp = 'guest'
+
+        if(myId == ''){
+            loginOp = 'guest'
+        }else if(myId.includes('admin')){
+            loginOp = 'master'
+        }else if(myId != ''){
+            loginOp = 'user'
         }
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+
+        if(loginOp == 'user') {
+            // 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';
+        }else if(loginOp == 'guest'){
+            // 로그아웃 상태에서 나타날 화면
+            loginText.innerText = '로그인';
+        }else if(loginOp == 'master'){
+            // 관리자 권한 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';     
+        }
+
+        document.getElementById('loginText').addEventListener('click',(e)=>{
+            e.preventDefault();
+            if(document.getElementById('loginText').innerText == '로그인'){
+                location.href = "login.html";
+            }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                location.href = "메인.html";
+            }
+        })
+
+        // chart 라이브러리 자바스크립트
+        if(loginOp == 'user' || loginOp == 'master'){
+            var options = {
+                chart: {
+                    type: 'line',
+                    toolbar: { show: false }
+                },
+                series: [{
+                    name: 'score',
+                    data: [4.03,3.21,3.72,3.61,2.6,2.93,3.63,3.5]
+                }],
+                xaxis: {
+                    categories: ['1학년1학기','1학년2학기','2학년1학기','2학년2학기','3학년1학기','3학년2학기','4학년1학기','4학년2학기']
+                },
+                background: "transparent",
+                stroke: { width: 3},
+                colors : ["#ff9900"],
+                
+            }
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
+        }else{
+            document.getElementById('chartBox').innerHTML = `<h3 class="logout_h3">로그인 후 이용 가능합니다.</h3>`;
+        }
 
         // menu 선택 시 변경되는 동작 총 관리 이벤트 리스너
         let menuOp = '';

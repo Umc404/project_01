@@ -1,0 +1,335 @@
+@font-face {
+    font-family: "NotoSansKR";
+    src: url(../font/NotoSansKR-VariableFont_wght.ttf);
+}
+body {
+    font-family: "NotoSansKR";
+}
+.inner{
+    width: 1280px;
+    margin: 0 auto;
+}
+.red{
+    color: #FFA100;
+    font-size: 15px;
+    font-weight: 700;
+}
+.inner>.top-image{
+    width: 100%;
+}
+.inner>.ess{
+    position: absolute;
+    top: 27%;
+    left: 66%;
+}
+.inner>.top-image>a>img{
+    width: 240px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.inner>form>.middle-information{
+    position: absolute;
+    width: 960px;
+    border-top: 5px solid #737373;
+    border-bottom: 5px solid #737373;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 20px 0 20px 150px;
+}
+.inner>form>.middle-information>.information{
+    width: 650px;
+}
+.inner>form>.middle-information>.information .check-btn{
+    margin-left: 10px;
+    padding: 5px 20px;
+    border: 2px solid #FFA100;
+    color: #FFA100;
+    font-size: 15px;
+    font-weight: 500;
+    /* 형광펜 css */
+    background: linear-gradient(to right, transparent 50%, #FF9900 50%) ;
+    background-size: 200%;
+    font-weight: 700;
+    transition: .25s;
+}
+.inner>form>.middle-information>.information .check-btn:hover{
+    color: white;
+    /* 형광펜 css */
+    background-position: -100%,0;
+}
+.in{
+    width: 350px;
+    height: 45px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 3px solid #a6a6a625;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+.inner>form>.middle-information>.information>ul{
+    margin: 0 0 20px 110px;
+}
+.inner>form>.middle-information>.information>ul>li{
+    margin: 0 5px 5px 5px;
+    list-style: none;
+}
+.success-message{
+    color: green;
+}
+.success-message1{
+    color: green;
+}
+.failure-message{
+    color: red;
+}
+.failure-message1{
+    color: red;
+}
+.failure-message2{
+    color: red;
+}
+.mismatch-message{
+    color: red;
+}
+.inner>form>.middle-information>.information>.id>.in{
+    margin-left: 70px;
+}
+.inner>form>.middle-information>.information>.pw>.in{
+    margin-left: 55px;
+}
+.inner>form>.middle-information>.information>.pw-check{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.pw-check>.in{
+    margin-left: 25px;
+}
+.inner>form>.middle-information>.information>.name{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.name>.in{
+    margin-left: 90px;
+}
+.inner>form>.middle-information>.information>.email{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.email>.in{
+    margin-left: 75px;
+}
+.inner>form>.middle-information>.information>.phoneNumber{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.phoneNumber>.in{
+    margin-left: 60px;
+}
+.inner>form>.middle-information>.information>.address>span>.addressBtn{
+    margin-left: 92px;
+    width: 351px;
+    height: 45px;
+    background-color: white;
+    border: 3px solid #FFA100;
+    color: #FFA100;
+    font-size: large;
+    font-weight: 700;
+    /* 형광펜 css */
+    background: linear-gradient(to right, transparent 50%, #FF9900 50%) ;
+    background-size: 200%;
+    font-weight: 700;
+    transition: .25s;
+}
+.inner>form>.middle-information>.information>.address>span>.addressBtn:hover{
+    color: white;
+    /* 형광펜 css */
+    background-position: -100%,0;
+}
+.bi-search{
+    margin-bottom: 3px;
+}
+.inner>form>.middle-information>.information>.address>div{
+    margin: 30px 0 15px 140px;
+}
+.inner>form>.middle-information>.information>.address>div>.address-box{
+    width: 175px;
+    height: 30px;
+    margin-bottom: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 3px solid #a6a6a625;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* radio css 효과 */
+label {
+    font-size: 18px;
+    line-height: 2rem;
+    padding: 0.2em 0.4em;
+}
+
+[type="radio"], span {
+    vertical-align: middle;
+}
+
+[type="radio"] {
+    appearance: none;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    transition: border 0.2s ease-in-out;
+}
+[type="radio"]:checked {
+    border: 0.4em solid #FF9900;
+}
+
+[type="radio"]:focus-visible {
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted #FF9900;
+}
+
+[type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}
+
+[type="radio"]:hover + span {
+    cursor: pointer;
+}
+
+/* Global CSS */
+
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+.inner>form>.middle-information>.information>.gender{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.gender>.radio-check{
+    margin-left: 85px;
+}
+.inner>form>.middle-information>.information>.gender>.radio-check>label{
+    margin: 0 20px;
+}
+.inner>form>.middle-information>.information>.birth{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.birth>.birth-container{
+    display: inline-block;
+    width: 360px;
+    border: 3px solid #a6a6a625;
+    margin-left: 70px;
+}
+.inner>form>.middle-information>.information>.birth>.birth-container>span{
+    position: absolute;
+    line-height: 45px;
+    color: #737373;
+}
+.inner>form>.middle-information>.information>.birth>.birth-container>.birth-box{
+    width: 60px;
+    height: 45px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 20px 0 33px;
+}
+.inner>form>.middle-information>.information>.birth>.birth-container>.birth-box:first-child{
+    margin-left: 34px;
+}
+.inner>form>.middle-information>.information>.entrance{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.entrance>span>select{
+    margin-left: 58px;
+    padding: 10px;
+    width: 360px;
+    height: 45px;
+    border: 3px solid #a6a6a625;
+    color: #737373;
+}
+.inn{
+    width: 360px;
+}
+.inner>form>.middle-information>.information>.college{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.college>.in{
+    margin-left: 74px;
+}
+.inner>form>.middle-information>.information>.major{
+    margin-bottom: 15px;
+}
+.inner>form>.middle-information>.information>.major>.in{
+    margin-left: 40px;
+}
+
+.inner>form>.bottom-consent{
+    display: flex;
+    width: 960px;
+    background-color: none;
+    margin-top: 1350px;
+    margin-left: 140px;
+    padding: 20px 0 20px 150px;
+}
+.inner>form>.bottom-consent>.consent{
+    margin-left: 30px;
+}
+.inner>form>.bottom-consent>.consent>div{
+    margin: 20px;
+}
+.inner>form>.bottom-consent>.consent>.bottom-title>div{
+    font-size: 15px;
+    font-weight: 700;
+}
+.inner>form>.bottom-consent>.consent>div>.checkbox{
+    accent-color: #FF9900;
+    margin-right: 20px;
+    vertical-align: text-top;
+}
+.inner>form>.bottom-consent>.consent>div>a{
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #FF9900;
+}
+.inner>form>.bottom-consent>.consent>div>a>.clause{
+    margin-left: 200px;
+}
+.inner>form>.bottom-consent>.consent>div>a>.clauseFirst{
+    margin-left: 280px;
+}
+.joinBtn .signup{
+    margin: 50px 0 0 5px;
+    width: 351px;
+    height: 45px;
+    background-color: white;
+    border: 3px solid #FFA100;
+    color: #FFA100;
+    font-size: large;
+    font-weight: 700;
+    /* 형광펜 css */
+    background: linear-gradient(to right, transparent 50%, #FF9900 50%) ;
+    background-size: 200%;
+    font-weight: 700;
+    transition: .25s;
+}
+.joinBtn .signup:hover{
+    color: white;
+    /* 형광펜 css */
+    background-position: -100%,0;
+}
+.hide {
+    display: none;
+}

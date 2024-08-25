@@ -253,7 +253,7 @@
 
         main>.inner>.timetable>.tbody td .mydiv{
             width: 129px;
-            z-index: 10;
+            z-index: 5;
             float: left;
             position: absolute;
             left: 0;
@@ -264,6 +264,7 @@
             width: 120px;
             margin: 10px 10px 0 10px;
             font-size: 14px;
+            font-weight: bold;
             line-height: 20px;
 
             display: flex;
@@ -335,22 +336,22 @@
         <div class = "inner">
             <!-- header -->
             <h1>
-            <a href="">
+            <a href="메인.html">
                 <img src="../img/img_ezenInside2.png" alt="">
             </a>
             </h1>
             <ul class="top-menu">
-                <li><a href="">로그인</a></li>
-                <li><a href="">내정보</a></li>
-                <li><a href="">쪽지</a></li>
+                <li><a href="login.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
             </ul>
             <nav class="nav">
                 <ul>
-                    <li><a href="" class="stress">공지사항</a></li>
-                    <li><a href="" class="stress">자유게시판</a></li>
-                    <li><a href="" class="stress">시간표</a></li>
-                    <li><a href="" class="stress">강의평가</a></li>
-                    <li><a href="" class="stress">학점계산기</a></li>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
                 </ul>
             </nav>
         </div>
@@ -654,31 +655,62 @@
 
     <!-- 자바 스크립트 추후 따로 파일 생성하겠습니다. -->
     <script>
+        function getLocalStorage(key){ return JSON.parse(localStorage.getItem(key)); }
+        function setLocalStorage(key, value){ localStorage.setItem(key,JSON.stringify(value)); } 
+
+        let myObj = getLocalStorage('loginInfomation');
+        let myId = myObj.id;
+        let loginOp = 'guest'
+
+        if(myId == ''){
+            loginOp = 'guest'
+        }else if(myId.includes('admin')){
+            loginOp = 'master'
+        }else if(myId != ''){
+            loginOp = 'user'
+        }
+
+        if(loginOp == 'user') {
+            // 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';
+        }else if(loginOp == 'guest'){
+            // 로그아웃 상태에서 나타날 화면
+            loginText.innerText = '로그인';
+        }else if(loginOp == 'master'){
+            // 관리자 권한 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';     
+        }
+
+        document.getElementById('loginText').addEventListener('click',(e)=>{
+            e.preventDefault();
+            if(document.getElementById('loginText').innerText == '로그인'){
+                location.href = "login.html";
+            }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                location.href = "메인.html";
+            }
+        })
+
         // 새 수업 추가에서 요일 버튼 클릭했을 때 week 변수에 요일명 담는 함수
         let week = '';
 
         document.getElementById('limon').addEventListener('click',(e)=>{
-            console.log(e.target.id);
             addactive(e.target.id);
             week = 'mon';
         })
         document.getElementById('litue').addEventListener('click',(e)=>{
-            console.log(e.target.id);
             addactive(e.target.id);
             week = 'tue';
         })
         document.getElementById('liwed').addEventListener('click',(e)=>{
-            console.log(e.target.id);
             addactive(e.target.id);
             week = 'wed';
         })
         document.getElementById('lithu').addEventListener('click',(e)=>{
-            console.log(e.target.id);
             addactive(e.target.id);
             week = 'thu';
         })
         document.getElementById('lifri').addEventListener('click',(e)=>{
-            console.log(e.target.id);
             addactive(e.target.id);
             week = 'fri';
         })
@@ -693,85 +725,76 @@
             document.getElementById(id).className = 'active';
         }
 
-        function setLocalStorage(key, value){ 
-            localStorage.setItem(key,JSON.stringify(value)); 
-        }
-
-        function getLocalStorage(key){
-            return JSON.parse(localStorage.getItem(key));
-        }
-
         const timetableArr = [];
         const valArr = [];
         const subSet = new Set();
         const subArr = [];
 
         document.getElementById('submit').addEventListener('click',()=>{
-            let sub = document.getElementById('subName').value;
-            let pro = document.getElementById('proName').value;
-            let start = document.getElementById('starthour').value;
-            let end = document.getElementById('endhour').value;
-            let room = document.getElementById('place').value;
+            if(loginOp == 'user' || loginOp == 'master'){
 
-            if(valify(valArr, week, start, end)){
-
-                alert("같은 시간에 이미 수업이 있습니다!");
-
-            }else{
-
-                for(let i=start; i<=end-1; i++){
-                    let valstr = `${week}-${i}`
-                    valArr.push(valstr);
-                }
-
-                subSet.add(sub);
-                subArr.splice(0,subArr.length);
-                subSet.forEach(e=>{
-                    subArr.push(e);
-                })
-                console.log(subArr);
-
-                let colorName = `color${subArr.indexOf(sub)}`;
-                console.log(colorName);
-
-                const tableObj = {
-                    subName : sub,
-                    proName : pro,
-                    week : week,
-                    starthour : start,
-                    endhour : end,
-                    place : room,
-                    color : colorName
-                }
+                let sub = document.getElementById('subName').value;
+                let pro = document.getElementById('proName').value;
+                let start = document.getElementById('starthour').value;
+                let end = document.getElementById('endhour').value;
+                let room = document.getElementById('place').value;
                 
-                timetableArr.push(tableObj);
+                if(valify(valArr, week, start, end)){
+                    alert("같은 시간에 이미 수업이 있습니다!");
+                    
+                }else if(start >= end){
+                    alert("시간 설정이 잘못되었습니다!");
+
+                }else{
+                    
+                    for(let i=start; i<=end-1; i++){
+                        let valstr = `${week}-${i}`
+                        valArr.push(valstr);
+                    }
+                    
+                    subSet.add(sub);
+                    subArr.splice(0,subArr.length);
+                    subSet.forEach(e=>{
+                        subArr.push(e);
+                    })
+                
+                    let colorName = `color${subArr.indexOf(sub)}`;
+                
+                    const tableObj = {
+                        subName : sub,
+                        proName : pro,
+                        week : week,
+                        starthour : start,
+                        endhour : end,
+                        place : room,
+                        color : colorName
+                    }
+                
+                    timetableArr.push(tableObj);
+                }
+            }else{
+                alert("로그인이 필요합니다!")
             }
             
-            setLocalStorage('timetable', timetableArr);
             printTable(timetableArr);
         })
 
         function valify(arr, week, start, end){
-            console.log("검증")
             for(let i=start; i<=end-1; i++){
                 if(arr.includes(`${week}-${i}`)){
-                    console.log("중복있음")
                     return true;
                 }
             }
-            console.log("중복없음")
             return false;
         }
-        
-        // printTable(getLocalStorage('timetable'));
 
         function printTable(arr){
             for(let i=0; i<arr.length; i++){
-                console.log(arr[i].color);
                 let mydiv = `<div class="mydiv ${arr[i].color}" style="height:${60*(Number(arr[i].endhour)-Number(arr[i].starthour))}px; top:${60*(Number(arr[i].starthour)-1)}px"><h3>${arr[i].subName}<button type="button" class="mydiv_del" id="delBtn">X</button></h3><p><span>${arr[i].proName}</span><br><span>${arr[i].place}</span></p></div>`;
                 document.getElementById(`${arr[i].week}`).innerHTML += mydiv;
             }
         }
+
         
     </script>
 </body>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nboard.css">
+
+</head>
+<body>
+    <header>
+        <div class = "inner">
+            <!-- header -->
+            <h1>
+            <a href="메인.html">
+                <img src="../img/img_ezenInside2.png" alt="">
+            </h1>
+            <ul class="top-menu">
+                <li><a href="login.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- <div class="main"> -->
+    <div class="main">
+        <div class="adboxArea">
+            <div class="adbox">
+                <img src="../img/ad001.jpg" alt="">
+            </div>
+            <div class="adbox">
+                <img src="../img/ad002.jpg" alt="">
+            </div>
+        </div>
+        <div class="center">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td colspan="4"><h2>공지사항</h2></td>
+                    </tr>
+                    <tr class="header1">
+                        <td class="num">번호</td>
+                        <td class="title">제목</td>
+                        <td>작성자</td>
+                        <td>작성날짜</td>
+                    </tr>
+                    <tr class="body">
+                        <td>1</td>
+                        <td class="title"><a href="notice_detail_sample.html">회원가입 후 추가 설정사항 안내</a></td>
+                        <td>관리자</td>
+                        <td>2024. 8. 19</td>
+                    </tr>
+                    <script>
+                        let i = 2;
+                        // for (i = 9; i > 0; i--) {
+                        //     document.write("<tr class='body'>");
+                        //         document.write("<td>" + i +"</td>");
+                        //         document.write("<td class='title'>제목입니다.</td>"); 
+                        //         document.write("<td>작성자</td>"); 
+                        //         document.write("<td>24-01-" + day-- + "</td>");
+                        //         document.write("</tr>");
+                        //     }
+                        const title = localStorage.getItem('ntitle');
+                        const content = localStorage.getItem('ncontent');
+                        const date = localStorage.getItem('ndate');
+                        
+                        if (title !== null && content !== null && date !== null){
+                            document.write("<tr class='body'>");
+                            document.write("<td>"+ i +"</td>")
+                            document.write(`<td class='title'><a href='notice_detail.html'>${localStorage.getItem('ntitle')}</a></td>`)
+                            document.write("<td>관리자</td>"); // 나중에 로그인 이름 넣으면 표시
+                            // document.write(`<td>24-08-19</td>`)
+                            document.write(`<td>${localStorage.getItem('ndate')}</td>`)
+                            document.write("</tr>");
+                            i++;
+                        }
+                        // 위에 저거 값없으면 출력 안하고 있으면 출력하는 방식으로 작업 예정.
+                    </script>
+                </tbody>
+                <tfoot>
+                    <tr class="enterSubmit">
+                        <td colspan="3"></td>
+                        <!-- <td><button onclick="location.href='notice_write.html'">글쓰기</button></td> -->
+                        <td><button onclick="writeCont()">글쓰기</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="rightSide">
+            <div class="pop_table"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+             <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+             </div>
+             <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 000-00-00000</span>
+                <span class="before">직업정보제공사업 신고번호: 0*14</span>
+             </div>
+             <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">ㅇㅇㅇ</a></span>
+            </div>
+    </footer>
+    <script src="../js/notice_board.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        main>.inner{
+            width: 1280px;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: space-between;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        main>.inner>.left{
+            width: 450px;
+            height: 520px;
+            border: 1px solid #d6d6d6;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+
+        main>.inner>.left>h1{
+            margin: 30px 20px 10px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        main>.inner>.left>.message{
+            cursor: pointer;
+            width: 449px;
+            height: 80px;
+            border-bottom: 1px solid rgb(197, 197, 197);
+            padding: 20px;
+            box-sizing: border-box
+        }
+
+        main>.inner>.left>.active{
+            background-color: #ff9900;
+            color: white;
+        }
+
+        main>.inner>.left>.message>.top{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        
+        main>.inner>.right{
+            width: 800px;
+            height: 520px;
+            border: 1px solid #d6d6d6;
+            border-radius: 12px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        main>.inner>.right>.top{
+            display: flex;
+            justify-content: space-between;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+
+        main>.inner>.right>.top>h1{
+            width: 550px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        main>.inner>.right>.top>span{
+            cursor: pointer;
+            font-weight: bold;
+            color: #ff9900;
+        }
+
+        main>.inner>.right>.bottom>.msg{
+            padding-bottom: 20px;
+            
+            border-bottom: 1px solid rgb(197, 197, 197);
+        }
+
+        main>.inner>.right>.bottom>.msg>.title{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        main>.inner>.right>.bottom>.msg>.title>:nth-child(1){
+            font-weight: bold;
+        }
+
+        main>.inner>.right>.bottom>.msg>.title>:nth-child(2){
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        /* 모달창 */
+        .modal{
+            position:absolute;
+            display:none;
+            z-index: 100;
+            justify-content: center;
+            top:0;
+            left:0;
+
+            width:100%;
+            height:100%;
+
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal>.modal_body{
+            width: 400px;
+            background-color: white;
+            padding: 25px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .modal>.modal_body>.s1{
+            font-family: "NotoSansKR";
+            width: 350px;
+            font-size: 18px;
+            color: rgb(66, 66, 66);
+            margin-bottom: 10px;
+        }
+
+        .modal>.modal_body>.s2{
+            font-family: "NotoSansKR";
+            width: 400px;
+            height: 100px;
+            border: none;
+            border: 1px solid #d6d6d6;
+            outline: none;
+            text-decoration: none;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        
+        .modal>.modal_body>.s3{
+            font-family: "NotoSansKR";
+            height: 30px;
+            border: none;
+            background-color: #ff9900;
+            border-radius: 2px;
+            color: white;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .modal>.modal_body>.s4{
+            font-family: "NotoSansKR";
+            height: 30px;
+            border: none;
+            color: white;
+            border-radius: 2px;
+            font-weight: bold;
+            background-color: #ff9900;
+            margin-bottom: 10px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class = "inner">
+            <!-- header -->
+            <h1>
+            <a href="메인.html">
+                <img src="../img/img_ezenInside2.png" alt="">
+            </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="login.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- 여기부터 작업! -->
+        <div class="inner">
+            <div class="left">
+                <h1>쪽지함</h1>
+                <div class="message message1 active" id="message1">
+                    <div class="top">
+                        <p>이젠인사이드</p>
+                        <p>24/08/24 15:19</p>
+                    </div>
+                    <div class="bottom">
+                        <p>[인증성공안내]</p>
+                    </div>
+                </div>
+                <div class="message message2" id="message2">
+                    <div class="top">
+                        <p>총학생회</p>
+                        <p>24/08/22 19:19</p>
+                    </div>
+                    <div class="bottom">
+                        <p>과잠 공동 구매 신청 양식입니다.</p>
+                    </div>
+                </div>
+                <div class="message message3" id="message3">
+                    <div class="top">
+                        <p>익명3</p>
+                        <p>24/08/22 22:10</p>
+                    </div>
+                    <div class="bottom">
+                        <p>혹시 교양프랑스어 수강하시나요?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="top">
+                    <h1>내용 보기</h1>
+                    <span id="btn_send">보내기</span>
+                    <span>초기화</span>
+                    <span>설정</span>
+                </div>
+                <div class="bottom" id="text1">
+                    <div class="msg msg1">
+                        <div class="title">
+                            <p>[인증성공안내]</p>
+                            <p>24/08/24 15:19</p>
+                        </div>
+                        <div class="main">
+                            <p>쪽지 이용 시 개인정보 및 금융정보 보호에 유의해주시기 바랍니다. 광고, 스팸, 사기 등의 쪽지를 받으셨을 경우 스팸 신고를 눌러주세요.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom" id="text2">
+                    <div class="msg msg1">
+                        <div class="title">
+                            <p>과잠 공동 구매 신청 양식입니다.</p>
+                            <p>24/08/22 19:19</p>
+                        </div>
+                        <div class="main">
+                            <p>이름: <br>전화번호: <br>단과대 이름: <br>전공 이름: <br>입금 계좌 번호: <br>주소: <br><br>위 양식에 맞춰서 8월 25일까지 보내주시길 바랍니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom" id="text3">
+                    <div class="msg msg1">
+                        <div class="title">
+                            <p>혹시 교양프랑스어 수강하시나요?</p>
+                            <p>24/08/24 22:10</p>
+                        </div>
+                        <div class="main">
+                            <p>안녕하세요. 혹시 교양프랑스어 수강하시나요? 제가 19일 수업을 빠져서 그런데 <br>과제 제출 양식을 여쭤봐도 괜찮을까요? ㅠㅠ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="send_box">
+            <div class="s0">
+                <h3 class="s1">쪽지 보내기</h3>
+                <a href="" class="s2">닫기</a>
+                <input type="text" placeholder="텍스트를 입력해주세요." class="s3">
+                <button class="s4">전송</button>
+            </div>
+        </div> -->
+
+        <div class="modal">
+            <div class="modal_body">
+                <h3 class="s1">쪽지 보내기</h3>
+                <textarea class="s2" placeholder="텍스트를 입력해주세요." id="modalbox"></textarea>
+                <button class="s3" id="modalBtn1">전송</button>
+                <button class="s4" id="modalBtn2">닫기</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+             <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+             </div>
+             <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 012-34-56789</span>
+                <span class="before">직업정보제공사업 신고번호: 01234567891011</span>
+             </div>
+             <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">㈜이젠인사이드</a></span>
+            </div>
+    </footer>
+
+    <script>
+        function getLocalStorage(key){ return JSON.parse(localStorage.getItem(key)); }
+        function setLocalStorage(key, value){ localStorage.setItem(key,JSON.stringify(value)); } 
+
+        let myObj = getLocalStorage('loginInfomation');
+        let myId = myObj.id;
+        let loginOp = 'guest'
+
+        if(myId == ''){
+            loginOp = 'guest'
+        }else if(myId.includes('admin')){
+            loginOp = 'master'
+        }else if(myId != ''){
+            loginOp = 'user'
+        }
+
+        if(loginOp == 'user') {
+            // 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';
+        }else if(loginOp == 'guest'){
+            // 로그아웃 상태에서 나타날 화면
+            loginText.innerText = '로그인';
+        }else if(loginOp == 'master'){
+            // 관리자 권한 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';     
+        }
+
+        if(loginOp == 'user') {
+            document.getElementById('text2').setAttribute('style','display: none;')
+            document.getElementById('text3').setAttribute('style','display: none;')
+            
+            document.getElementById('message1').addEventListener('click',(e)=>{
+                for(let i=1; i<=3; i++){
+                    document.getElementById(`message${i}`).className = 'message';
+                    document.getElementById(`text${i}`).removeAttribute('style');
+                }
+                document.getElementById('message1').className += ' active';
+                
+                document.getElementById('text2').setAttribute('style','display: none;')
+                document.getElementById('text3').setAttribute('style','display: none;')
+            })
+
+            document.getElementById('message2').addEventListener('click',(e)=>{
+                for(let i=1; i<=3; i++){
+                    document.getElementById(`message${i}`).className = 'message';
+                    document.getElementById(`text${i}`).removeAttribute('style')
+                }
+                document.getElementById('message2').className += ' active';
+                
+                document.getElementById('text1').setAttribute('style','display: none;')
+                document.getElementById('text3').setAttribute('style','display: none;')
+            })
+
+            document.getElementById('message3').addEventListener('click',(e)=>{
+                for(let i=1; i<=3; i++){
+                    document.getElementById(`message${i}`).className = 'message';
+                    document.getElementById(`text${i}`).removeAttribute('style')
+                }
+                document.getElementById('message3').className += ' active';
+                
+                document.getElementById('text2').setAttribute('style','display: none;')
+                document.getElementById('text1').setAttribute('style','display: none;')
+            })
+            
+            const modal = document.querySelector('.modal');
+            
+            document.getElementById('btn_send').addEventListener('click',()=>{
+                modal.style.display="flex";
+                document.getElementById('modalbox').value = '';
+            })
+            
+            document.getElementById('modalBtn1').addEventListener('click',()=>{
+                alert("메세지를 보냈습니다.");
+                document.getElementById('modalbox').value = '';
+                modal.style.display="none";
+                
+            })
+            
+            document.getElementById('modalBtn2').addEventListener('click',()=>{
+                document.getElementById('modalbox').value = '';
+                modal.style.display="none";
+            })
+        
+        }else{
+            document.getElementById('text1').setAttribute('style','display: none;')
+            document.getElementById('text2').setAttribute('style','display: none;')
+            document.getElementById('text3').setAttribute('style','display: none;')
+            document.getElementById(`message1`).setAttribute('style','display: none;');
+            document.getElementById(`message2`).setAttribute('style','display: none;');
+            document.getElementById(`message3`).setAttribute('style','display: none;');
+        }
+
+    </script>
+</body>
+</html>

@@ -1079,7 +1079,6 @@ main>.inner-detail>.exam-list>.exam-article>.info>span>span{
 main>.inner-detail>.exam-list>.exam-article>.pay>.message>p{
     color: #444444;
     font-size: 20px;
-    font-weight: 300;
 }
 main>.inner-detail>.exam-list>.exam-article>.pay>.message>p>strong{
     color:#F91F15;
@@ -1107,7 +1106,7 @@ main>.inner-detail>.exam-list>.exam-article>.contents-blur{
     height: 100%;
     font-size: 20px;
     line-height: 25px;
-    text-shadow: 0px 0px 12px #bebebe;
+    text-shadow: 0px 0px 12px #d6d6d6;
     color: transparent;
     margin-top: 60px;
     margin-bottom: 20px;

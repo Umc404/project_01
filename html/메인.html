@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2d66cd00f45fa938afaca7e9a5f1b4cd"></script>
+    <style>
+        main>.inner {
+            width: 1280px;
+            margin: 0 auto;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        /* 메인 상단 이미지 배너 */
+        main>.inner>.main_img {
+            width: 100%;
+            height: 480px;
+            margin-bottom: 20px;
+        }
+
+        main>.inner>.main_img>.slider {
+            width: 1280px;
+            height: 480px;
+            background-color: #d6d6d6;
+        }
+
+        main>.inner>.main_img>.slider .box {
+            background-position: center;
+            background-size: cover;
+        }
+
+        main>.inner>.main_img>.slider .box1 {
+            background-image: url(../img/main_img1.png);
+        }
+
+        main>.inner>.main_img>.slider .box2 {
+            background-image: url(../img/main_img2.jpg);
+        }
+
+        main>.inner>.main_img>.slider .box3 {
+            background-image: url(../img/main_img3.jpg);
+        }
+
+        main>.inner>.main_img>.slider .box4 {
+            background-image: url(../img/main_img4.jpg);
+        }
+
+        main>.inner>.main_img>.slider .box5 {
+            background-image: url(../img/main_img5.jpg);
+        }
+
+        /* 메인 중간부 박스 */
+        main>.inner>.main_box {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 메인 중간부 왼쪽 박스 */
+        main>.inner>.main_box>.main_left {
+            width: 820px;
+            /* border: 1px solid #d6d6d6; */
+        }
+
+        main>.inner>.main_box>.main_left>.top {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 10px 0 10px;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board {
+            width: 390px;
+            height: 300px;
+            border: 1px solid #d6d6d6;
+            box-sizing: border-box;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list {
+            height: calc(100%/6);
+            border-bottom: 1px solid #d6d6d6;
+            padding: 0 10px 0;
+            line-height: 50px;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list_last {
+            border-bottom: none;
+            line-height: 45px;
+            display: flex;
+            justify-content: end;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list_last>a {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ff9900;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list_h3 {
+            cursor: pointer;
+            font-weight: bold;
+            color: #ff9900;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>a {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            color: #737373;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>a:hover {
+            background-color: #F2F2F2;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list>p {
+            display: inline-block;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list>.title {
+            color: black;
+            font-size: 15px;
+        }
+
+        main>.inner>.main_box>.main_left>.top>.board>.list>.time {
+            font-size: 13px;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book>.title {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff9900;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book>.pbox {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book>.pbox>.box {
+            cursor: pointer;
+            width: 250px;
+            height: 400px;
+            border: 1px solid #d6d6d6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book .box>.img {
+            align-items: center;
+            width: 250px;
+            height: 300px;
+            background-image: url(../img/book_img1.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book .box>.img1 {
+            background-image: url(../img/book_img1.jpg);
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book .box>.img2 {
+            background-image: url(../img/book_img2.jpg);
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book .box>.img3 {
+            background-image: url(../img/book_img3.jpg);
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book .box>h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-left: 10px;
+            text-align: start;
+        }
+
+        main>.inner>.main_box>.main_left>.bottom>.book .box>h1 {
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(201, 0, 0);
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        main>.inner>.main_box>.main_right {
+            width: 420px;
+            /* border: 1px solid #d6d6d6; */
+            padding-top: 10px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile {
+            width: 400px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d6d6d6;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-sizing: border-box;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_img {
+            width: 180px;
+            height: 180px;
+            background-image: url(../img/profile_img.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_info {
+            width: 200px;
+            height: 200px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_info>p {
+            width: 140px;
+            height: 20px;
+            font-size: 20px;
+            margin-bottom: 5px;
+            margin-left: 20px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_info>:nth-child(1) {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_info>:nth-child(2) {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_info>:nth-child(3) {}
+
+        main>.inner>.main_box>.main_right>.myprofile>.top>.profile_info>:nth-child(4) {
+            font-size: 15px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.bottom>a {
+            display: inline-block;
+            width: 180px;
+            height: 50px;
+            background-color: #F2F2F2;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.bottom>a:hover {
+            background-color: #ffa100;
+            color: white;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.false_h3 {
+            margin: 20px auto;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.false_a {
+            cursor: pointer;
+            display: block;
+            width: 250px;
+            height: 50px;
+            border: 1px solid #d6d6d6;
+            color: #737373;
+            border-radius: 5px;
+            margin: 20px auto;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 50px;
+            text-align: center;
+
+        }
+
+        main>.inner>.main_box>.main_right>.myprofile>.false_a:hover {
+            background-color: #ffa100;
+            border-color: #ffa100;
+            color: white;
+        }
+
+        main>.inner>.main_box>.main_right>.mapBox>.myMap{
+            width: 400px;
+            height: 300px;
+            margin-left: 10px;
+            border: 1px solid #d6d6d6;
+            border-top: none;
+            border-bottom: none;
+            box-sizing: border-box;
+        }
+        
+        main>.inner>.main_box>.main_right>.mapBox>.p1{
+            width: 400px;
+            height: 50px;
+            margin-left: 10px;
+            border: 1px solid #d6d6d6;
+            border-bottom: none;
+
+            line-height: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #414141;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+        main>.inner>.main_box>.main_right>.mapBox>.p2{
+            cursor: pointer;
+            width: 400px;
+            height: 40px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d6d6d6;
+            border-top: none;
+            box-sizing: border-box;
+
+            text-align: end;
+            line-height: 40px;
+            padding-right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffa100;
+        }
+
+        main>.inner>.main_box>.main_right>.adbox {
+            cursor: pointer;
+            width: 400px;
+            height: 200px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d6d6d6;
+            background-color: aliceblue;
+            background-position: center;
+            background-size: cover;
+        }
+
+        main>.inner>.main_box>.main_right>.adbox1 {
+            background-image: url(../img/ad_img1.png);
+        }
+
+        main>.inner>.main_box>.main_right>.adbox2 {
+            background-image: url(../img/ad_img2.png);
+        }
+
+        main>.inner>.main_box>.main_right>.adbox3 {
+            background-image: url(../img/ad_img3.png);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <!-- header -->
+            <h1>
+                <a href="메인.html">
+                    <img src="../img/img_ezenInside2.png" alt="">
+                </a>
+            </h1>
+            <ul class="top-menu">
+                <li><a href="login.html" id="loginText">로그인</a></li>
+                <li><a href="myinfo.html">내정보</a></li>
+                <li><a href="쪽지.html">쪽지</a></li>
+            </ul>
+            <nav class="nav">
+                <ul>
+                    <li><a href="notice_board.html" class="stress">공지사항</a></li>
+                    <li><a href="free_board.html" class="stress">자유게시판</a></li>
+                    <li><a href="시간표.html" class="stress">시간표</a></li>
+                    <li><a href="강의평가메인.html" class="stress">강의평가</a></li>
+                    <li><a href="학점계산기.html" class="stress">학점계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- 여기부터 작업! -->
+        <div class="inner">
+
+            <!-- 메인 상단 이미지 배너 -->
+            <div class="main_img">
+                <section id="slider1" class="slider">
+                    <div class="box box1"></div>
+                    <div class="box box2"></div>
+                    <div class="box box3"></div>
+                    <div class="box box4"></div>
+                    <div class="box box5"></div>
+                </section>
+            </div>
+
+            <!-- 메인 중간부 박스 -->
+            <div class="main_box">
+                <!-- 메인 중간부 박스 왼쪽 -->
+                <div class="main_left">
+                    <div class="top top1">
+                        <div class="board board1">
+                            <h3 class="list list_h3">자유게시판</h3>
+                            <a class="list">
+                                <p class="title">학교 앞 맛집 추천</p>
+                                <p class="time">방금</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">신짱구 교수님 과제 많나요?</p>
+                                <p class="time">29분전</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">휴학하면 뭐 할까?</p>
+                                <p class="time">40분전</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">우리 학교 인스타 링크좀</p>
+                                <p class="time">1시간전</p>
+                            </a>
+                            <div class="list list_last"><a href="free_board.html">더보기 +</a></div>
+                        </div>
+                        <div class="board board2">
+                            <h3 class="list list_h3">정보게시판</h3>
+                            <a class="list">
+                                <p class="title">서울캠퍼스 취업박람회 안내</p>
+                                <p class="time">방금</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">서브웨이에서 함께 일하실 분을 구합니다.</p>
+                                <p class="time">08/22 07:25</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">대학생 연합 IT 동아리 6기 모집</p>
+                                <p class="time">08/21 05:30</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">온라인 입사지원 컨설팅 프로그램</p>
+                                <p class="time">08/21 03:13</p>
+                            </a>
+                            <div class="list list_last"><a href="free_board.html">더보기 +</a></div>
+                        </div>
+                    </div>
+                    <div class="top top2">
+                        <div class="board board1">
+                            <h3 class="list list_h3">졸업생게시판</h3>
+                            <a class="list">
+                                <p class="title">포트폴리오 조언 부탁드립니다.</p>
+                                <p class="time">방금</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">대학생 때로 돌아가고 싶다..</p>
+                                <p class="time">5분전</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">건축공학과 취업 질문</p>
+                                <p class="time">08/24 08:22</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">학점이 3점대인데...</p>
+                                <p class="time">08/21 15:03</p>
+                            </a>
+                            <div class="list list_last"><a href="free_board.html">더보기 +</a></div>
+                        </div>
+                        <div class="board board2">
+                            <h3 class="list list_h3">새내기게시판</h3>
+                            <a class="list">
+                                <p class="title">셔틀버스 탈 때 학생증 찍나요?</p>
+                                <p class="time">방금</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">정문에서 5분거리 원룸 양도합니다!</p>
+                                <p class="time">방금</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">신입생 환영회 가본 사람</p>
+                                <p class="time">방금</p>
+                            </a>
+                            <a class="list">
+                                <p class="title">자취방 못 구했다..</p>
+                                <p class="time">5분전</p>
+                            </a>
+                            <div class="list list_last"><a href="free_board.html">더보기 +</a></div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="book">
+                            <div class="title">중고 책방</div>
+                            <div class="pbox">
+                                <div class="box box1">
+                                    <div class="img img1"></div>
+                                    <h3>아카데믹 글쓰기</h3>
+                                    <h1>18,000원</h1>
+                                </div>
+                                <div class="box box2">
+                                    <div class="img img2"></div>
+                                    <h3>미분적분학 Calculus</h3>
+                                    <h1>30,000원</h1>
+                                </div>
+                                <div class="box box3">
+                                    <div class="img img3"></div>
+                                    <h3>노동경제학</h3>
+                                    <h1>17,000원</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 메인 중간부 박스 오른쪽 -->
+                <div class="main_right">
+
+                    <div class="myprofile" id="profile">
+                        <div class="top">
+                            <div class="profile_img"></div>
+                            <div class="profile_info">
+                                <p>이젠 대학교</p>
+                                <p>컴퓨터공학과</p>
+                                <p id="profile_id">ezen1234</p>
+                                <p id="profile_name">홍길동</p>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <a href="myinfo.html" class="btn_myinfo">내 정보</a>
+                            <a href="" class="btn_logout" id="myprofile_logout">로그아웃</a>
+                        </div>
+                    </div>
+                    <div class="mapBox" id="mapBox">
+                        <p class="p1">우리학교 근처 맛집 찾기</p>
+                        <div class="myMap" id="myMap"></div>
+                        <p class="p2">바로가기 +</p>
+                    </div>
+                    <div class="adbox adbox1"></div>
+                    <div class="adbox adbox2"></div>
+                    <div class="adbox adbox3"></div>
+
+                </div>
+            </div>
+
+            <!-- 메인 하단 광고 배너 -->
+            <div class="adbox"></div>
+
+        </div>
+    </main>
+    <footer>
+        <div class="inner">
+            <!-- footer -->
+            <div class="top-title bold">
+                <span>이젠 아카데미 학원</span>
+            </div>
+            <div class="middle">
+                <span>인천광역시</span>
+                <span class="before">사업자등록번호: 012-34-56789</span>
+                <span class="before">직업정보제공사업 신고번호: 01234567891011</span>
+            </div>
+            <div class="bottom">
+                <span><a href="">이용약관</a></span>
+                <span class="before bold"><a href="">개인정보처리방침</a></span>
+                <span class="before"><a href="">청소년보호정책</a></span>
+                <span class="before"><a href="">커뮤니티이용규칙</a></span>
+                <span class="before"><a href="">문의하기</a></span>
+                <span class="before"><a href="">㈜이젠인사이드</a></span>
+            </div>
+    </footer>
+    <script>
+        function setLocalStorage(key, value){ localStorage.setItem(key,JSON.stringify(value)); } 
+        function getLocalStorage(key){ return JSON.parse(localStorage.getItem(key)); }
+
+        let myObj = getLocalStorage('loginInfomation');
+        let myId = myObj.id;
+        let loginOp = 'guest'
+
+        if(myId == ''){
+            loginOp = 'guest'
+        }else if(myId.includes('admin')){
+            loginOp = 'master'
+        }else if(myId != ''){
+            loginOp = 'user'
+        }
+
+        // 로그인 로그아웃 관리자 별로 다른 UI 제공
+        const profile = document.getElementById('profile');
+        const loginText = document.getElementById('loginText');
+        if(loginOp == 'user') {
+            // 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';
+            document.getElementById('profile_id').innerText = myObj.id;
+            document.getElementById('profile_name').innerText = myObj.name;
+
+            document.getElementById('myprofile_logout').addEventListener('click',()=>{
+            setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+            location.reload();
+        })
+        }else if(loginOp == 'guest'){
+            // 로그아웃 상태에서 나타날 화면
+            loginText.innerText = '로그인';
+            profile.innerHTML = `<h3 class="false_h3">커뮤니티 이용을 위해<br>로그인이 필요합니다!</h3><a href="login.html" class="false_a">로그인 하러 가기</a>`;
+            document.getElementById('mapBox').innerHTML = '';
+
+        }else if(loginOp == 'master'){
+            // 관리자 권한 로그인 후 나타날 화면
+            loginText.innerText = '로그아웃';     
+            profile.innerHTML = `<h3 class="false_h3">관리자 권한으로<br>로그인했습니다.</h3>`;
+            document.getElementById('mapBox').innerHTML = '';
+        }
+
+        window.addEventListener('DOMContentLoaded', function(){
+            var container = document.getElementById('myMap'); //지도를 담을 영역의 DOM 레퍼런스
+            var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new kakao.maps.LatLng(37.4492849605083, 126.65445129317933), //지도의 중심좌표.
+                level: 5 //지도의 레벨(확대, 축소 정도)
+            };
+
+            var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+        });
+
+        document.getElementById('loginText').addEventListener('click',(e)=>{
+            e.preventDefault();
+            if(document.getElementById('loginText').innerText == '로그인'){
+                location.href = "login.html";
+            }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                location.href = "메인.html";
+            }
+        })
+
+        // 메인 상단 이미지 배너
+        function Slider(target, type) {
+            // 상태
+            let index = 1;
+            let isMoved = true;
+            const speed = 1000; // ms
+
+            // 방향
+            const transform = "transform " + speed / 1000 + "s";
+            let translate = (i) => "translateX(-" + 100 * i + "%)";
+            if (type === "V") {
+                translate = (i) => "translateY(-" + 100 * i + "%)";
+            }
+
+            // 슬라이더
+            const slider = document.querySelector(target);
+            const sliderRects = slider.getClientRects()[0];
+            slider.style["overflow"] = "hidden";
+
+            // 슬라이더 화면 컨테이너
+            const container = document.createElement("div");
+            container.style["display"] = "flex";
+            container.style["flex-direction"] = type === "V" ? "column" : "row";
+            container.style["width"] = sliderRects.width + "px";
+            container.style["height"] = sliderRects.height + "px";
+            container.style["transform"] = translate(index);
+
+            // 슬라이더 화면 목록
+            let boxes = [].slice.call(slider.children);
+            boxes = [].concat(boxes[boxes.length - 1], boxes, boxes[0]);
+
+            // 슬라이더 화면 스타일
+            const size = boxes.length;
+            for (let i = 0; i < size; i++) {
+                const box = boxes[i];
+                box.style["flex"] = "none";
+                box.style["flex-wrap"] = "wrap";
+                box.style["height"] = "100%";
+                box.style["width"] = "100%";
+                container.appendChild(box.cloneNode(true));
+            }
+
+            // 처음/마지막 화면 눈속임 이벤트
+            container.addEventListener("transitionstart", function () {
+                isMoved = false;
+                setTimeout(() => {
+                    isMoved = true;
+                }, speed);
+            });
+            container.addEventListener("transitionend", function () {
+                // 처음으로 순간이동
+                if (index === size - 1) {
+                    index = 1;
+                    container.style["transition"] = "none";
+                    container.style["transform"] = translate(index);
+                }
+                // 끝으로 순간이동
+                if (index === 0) {
+                    index = size - 2;
+                    container.style["transition"] = "none";
+                    container.style["transform"] = translate(index);
+                }
+            });
+
+            // 슬라이더 붙이기
+            slider.innerHTML = "";
+            slider.appendChild(container);
+
+            return {
+                move: function (i) {
+                    if (isMoved === true) {
+                        index = i;
+                        container.style["transition"] = transform;
+                        container.style["transform"] = translate(index);
+                    }
+                },
+                next: function () {
+                    if (isMoved === true) {
+                        index = (index + 1) % size;
+                        container.style["transition"] = transform;
+                        container.style["transform"] = translate(index);
+                    }
+                },
+                prev: function () {
+                    if (isMoved === true) {
+                        index = index === 0 ? index + size : index;
+                        index = (index - 1) % size;
+                        container.style["transition"] = transform;
+                        container.style["transform"] = translate(index);
+                    }
+                }
+            };
+        }
+
+        const s1 = new Slider("#slider1", "H");
+
+        setInterval(() => {
+            s1.next();
+        }, 4000)
+    </script>
+</body>
+
+</html>

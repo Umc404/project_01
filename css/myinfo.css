@@ -1,0 +1,133 @@
+@font-face {
+    font-family: "NotoSansKR";
+    src: url(../font/NotoSansKR-VariableFont_wght.ttf);
+}
+body {
+    font-family: "NotoSansKR";
+}
+.inner{
+    width: 1280px;
+}
+.inner>.top-image{
+    width: 100%;
+}
+.inner>.top-image>a>img{
+    width: 240px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.inner>.middle-information{
+    position: absolute;
+    width: 960px;
+    border-top: 5px solid #737373;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 20px 0 20px 400px;
+}
+.inner>.middle-information>.information{
+    width: 650px;
+}
+.in{
+    width: 350px;
+    height: 45px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 3px solid #a6a6a625;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+.inner>.middle-information>.information>.id>.in{
+    margin-left: 80px;
+}
+.inner>.middle-information>.information>.name{
+    margin-bottom: 15px;
+}
+.inner>.middle-information>.information>.name>.in{
+    margin-left: 94px;
+}
+.inner>.middle-information>.information>.email{
+    margin-bottom: 15px;
+}
+.inner>.middle-information>.information>.email>.in{
+    margin-left: 80px;
+}
+.inner>.middle-information>.information>.phoneNumber{
+    margin-bottom: 15px;
+}
+.inner>.middle-information>.information>.phoneNumber>.in{
+    margin-left: 65px;
+}
+.inner>.middle-information>.information>.address>.address-container{
+    margin: 0 0 15px 90px;
+}
+.inner>.middle-information>.information>.address>span>.address-box{
+    width: 175px;
+    height: 30px;
+    margin-bottom: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 3px solid #a6a6a625;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+.one{
+    margin-left: 5px;
+}
+.three{
+    margin-left: 128px;
+}
+.inner>.middle-information>.information>.birth{
+    margin-bottom: 15px;
+}
+.inner>.middle-information>.information>.birth>.birth-container{
+    display: inline-block;
+    width: 350px;
+    border: 3px solid #a6a6a625;
+    margin-left: 65px;
+}
+.inner>.middle-information>.information>.birth>.birth-container>span{
+    position: absolute;
+    line-height: 45px;
+}
+.inner>.middle-information>.information>.birth>.birth-container>.birth-box{
+    width: 65px;
+    height: 45px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.inner>.middle-information>.information>.birth>.birth-container>.birth-box:first-child{
+    margin-left: 34px;
+}
+.inn{
+    width: 355px;
+}
+.inner>.middle-information>.information>.college{
+    margin-bottom: 15px;
+}
+.inner>.middle-information>.information>.college>.in{
+    margin-left: 80px;
+}
+.inner>.middle-information>.information>.major{
+    margin-bottom: 15px;
+}
+.inner>.middle-information>.information>.major>.in{
+    margin-left: 51px;
+}
+
+/* 전체 disabled 색상 변경 */
+*:disabled {
+    background-color: white;
+    color: linen;
+    opacity: 1;
+  }
