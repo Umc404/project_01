@@ -229,7 +229,6 @@
             let loginOp = 'guest'
             const loginText = document.getElementById('loginText');
 
-            console.log(loginOp)
             if(myId == ''){
                 loginOp = 'guest'
                 loginText.innerText = '로그인'
@@ -262,8 +261,9 @@
 
             //로그인 유무 확인, 글쓰기 제어
             const loginInfomation = JSON.parse(localStorage.getItem('loginInfomation')) || {};
+            console.log(loginInfomation);
             document.getElementById('examWrite').addEventListener('click',(event)=>{
-                if (!loginInfomation || Object.keys(loginInfomation).length === 0){
+                if (!loginInfomation || Object.keys(loginInfomation).length === 0 || loginInfomation.id==''){
                     alert('로그인이 필요합니다.');
                     event.preventDefault();
                 }
