@@ -343,6 +343,16 @@
             loginText.innerText = '로그아웃';     
         }
 
+        document.getElementById('loginText').addEventListener('click',(e)=>{
+            e.preventDefault();
+            if(document.getElementById('loginText').innerText == '로그인'){
+                location.href = "login.html";
+            }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                location.href = "메인.html";
+            }
+        })
+        
         if(loginOp == 'user') {
             document.getElementById('text2').setAttribute('style','display: none;')
             document.getElementById('text3').setAttribute('style','display: none;')

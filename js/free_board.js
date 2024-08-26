@@ -15,28 +15,49 @@
 
         const profile = document.getElementById('profile');
         const loginText = document.getElementById('loginText');
+        // if(loginOp == 'user') {
+        //     // 로그인 후 나타날 화면
+        //     loginText.innerText = '로그아웃';
+        //     document.getElementById('profile_id').innerText = myObj.id;
+        //     document.getElementById('profile_name').innerText = myObj.name;
+
+        //     document.getElementById('myprofile_logout').addEventListener('click',()=>{
+        //     setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+        //     location.reload();
+        // })
+        // }else if(loginOp == 'guest'){
+        //     // 로그아웃 상태에서 나타날 화면
+        //     loginText.innerText = '로그인';
+        //     profile.innerHTML = `<h3 class="false_h3">커뮤니티 이용을 위해<br>로그인이 필요합니다!</h3><a href="login.html" class="false_a">로그인 하러 가기</a>`;
+        //     document.getElementById('mapBox').innerHTML = '';
+
+        // }else if(loginOp == 'master'){
+        //     // 관리자 권한 로그인 후 나타날 화면
+        //     loginText.innerText = '로그아웃';     
+        //     profile.innerHTML = `<h3 class="false_h3">관리자 권한으로<br>로그인했습니다.</h3>`;
+        //     document.getElementById('mapBox').innerHTML = '';
+        // }
+
         if(loginOp == 'user') {
             // 로그인 후 나타날 화면
             loginText.innerText = '로그아웃';
-            document.getElementById('profile_id').innerText = myObj.id;
-            document.getElementById('profile_name').innerText = myObj.name;
-
-            document.getElementById('myprofile_logout').addEventListener('click',()=>{
-            setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
-            location.reload();
-        })
         }else if(loginOp == 'guest'){
             // 로그아웃 상태에서 나타날 화면
             loginText.innerText = '로그인';
-            profile.innerHTML = `<h3 class="false_h3">커뮤니티 이용을 위해<br>로그인이 필요합니다!</h3><a href="login.html" class="false_a">로그인 하러 가기</a>`;
-            document.getElementById('mapBox').innerHTML = '';
-
         }else if(loginOp == 'master'){
             // 관리자 권한 로그인 후 나타날 화면
             loginText.innerText = '로그아웃';     
-            profile.innerHTML = `<h3 class="false_h3">관리자 권한으로<br>로그인했습니다.</h3>`;
-            document.getElementById('mapBox').innerHTML = '';
         }
+        
+        document.getElementById('loginText').addEventListener('click',(e)=>{
+            e.preventDefault();
+            if(document.getElementById('loginText').innerText == '로그인'){
+                location.href = "login.html";
+            }else if(document.getElementById('loginText').innerText == '로그아웃'){
+                setLocalStorage('loginInfomation',{id : '',password : '', name : '', email : ''})
+                location.href = "메인.html";
+            }
+        })   
         
         function writeCont(){
             let id = myId;
